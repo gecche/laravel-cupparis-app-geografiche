@@ -1,0 +1,48 @@
+{
+    "name": "gecche/laravel-cupparis-geografiche",
+    "description": "Pacchetto per gestione dati geografici (Comuni, Province ecc...) di Cupparis Laravel App",
+    "keywords": ["laravel", "cupparis"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giacomo Terreni",
+            "email": "giacomo.terreni@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^6.0",
+        "gecche/laravel-cupparis-app": "v2.x-dev"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^8.0",
+        "limedeck/phpunit-detailed-printer": "^5.0",
+        "orchestra/testbench": "^4.0"
+    },
+    "autoload": {
+        "classmap": [
+
+        ],
+        "psr-4": {
+            "Gecche\\Cupparis\\Geografiche\\": "src"
+        },
+        "files": [
+
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+
+            ]
+        }
+    }
+}
