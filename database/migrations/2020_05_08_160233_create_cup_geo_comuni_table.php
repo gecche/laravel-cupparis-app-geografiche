@@ -23,8 +23,16 @@ class CreateCupGeoComuniTable extends Migration {
             $table->string('codice_catastale',6)->unique();
 			$table->integer('provincia_id')->unsigned()->index();
 			$table->foreign('provincia_id')->references('id')->on('cup_geo_province')->onDelete('restrict')->onUpdate('cascade');
-			
-			
+            $table->integer('regione_id')->unsigned()->index();
+            $table->foreign('regione_id')->references('id')->on('cup_geo_regioni')->onDelete('restrict')->onUpdate('cascade');
+            $table->integer('area_id')->unsigned()->index();
+            $table->foreign('area_id')->references('id')->on('cup_geo_aree')->onDelete('restrict')->onUpdate('cascade');
+            $table->integer('nazione_id')->unsigned()->index()->nullable()->default(null);
+            $table->foreign('nazione_id')->references('id')->on('cup_geo_nazioni')->onDelete('restrict')->onUpdate('cascade');
+			$table->string('cap',6)->nullable();
+            $table->string('prefisso',6)->nullable();
+            $table->decimal('lat',10,8)->nullable();
+            $table->decimal('lng',11,8)->nullable();
 
 		});
 	}
