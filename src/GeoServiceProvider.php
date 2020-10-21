@@ -1,4 +1,4 @@
-<?php namespace Gecche\Cupparis\App;
+<?php namespace Gecche\Cupparis\App\Geografiche;
 
 use Gecche\Cupparis\App\Foorm\FoormManager;
 use Illuminate\Support\Facades\Blade;

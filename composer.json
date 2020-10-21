@@ -23,7 +23,7 @@
 
         ],
         "psr-4": {
-            "Gecche\\Cupparis\\Geografiche\\": "src"
+            "Gecche\\Cupparis\\App\\Geografiche\\": "src"
         },
         "files": [
 
@@ -40,7 +40,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Gecche\\Cupparis\\Geografiche\\GeoServiceProvider"
+                "Gecche\\Cupparis\\App\\Geografiche\\GeoServiceProvider"
             ]
         }
     }
