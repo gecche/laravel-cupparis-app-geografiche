@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace Gecche\Cupparis\App\Geografiche\Models;
 
 use Gecche\Cupparis\App\Breeze\Breeze;
 
 /**
  * Breeze (Eloquent) model for T_COMUNE table.
  */
-class Comune extends Breeze
+class CupGeoComune
 {
 	use Relations\ComuneRelations;
 

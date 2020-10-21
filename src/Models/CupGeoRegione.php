@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Gecche\Cupparis\App\Geografiche\Models;
 
 use Gecche\Cupparis\App\Breeze\Breeze;
 use Illuminate\Support\Facades\DB;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * Breeze (Eloquent) model for T_REGIONE table.
  */
-class Regione extends Breeze
+class CupGeoRegione extends Breeze
 {
 	use Relations\RegioneRelations;
 

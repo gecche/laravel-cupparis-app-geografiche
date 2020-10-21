@@ -27,39 +27,52 @@ class GeoServiceProvider extends ServiceProvider
         }
         $this->publishes([
 //            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
-            __DIR__ . '/../config/foorms/user.php' => config_path('foorms/user.php'),
-        ], 'public');
+            __DIR__ . '/../config/foorms/cup_geo_area.php' => config_path('foorms/cup_geo_area.php'),
+            __DIR__ . '/../config/foorms/cup_geo_comune.php' => config_path('foorms/cup_geo_comune.php'),
+            __DIR__ . '/../config/foorms/cup_geo_nazione.php' => config_path('foorms/cup_geo_nazione.php'),
+            __DIR__ . '/../config/foorms/cup_geo_provincia.php' => config_path('foorms/cup_geo_provincia.php'),
+            __DIR__ . '/../config/foorms/cup_geo_regione.php' => config_path('foorms/cup_geo_regione.php'),
+        ], 'config-foorms');
 
 
         //Publishing and overwriting app folders
         $this->publishes([
-            __DIR__ . '/../bootstrap/app.php' => base_path('bootstrap/app.php'),
-            __DIR__ . '/../app/Console/Kernel.php' => app_path('Console/Kernel.php'),
-            __DIR__ . '/../app/Console/Commands' => app_path('Console/Commands'),
-            __DIR__ . '/../app/Foorm' => app_path('Foorm'),
-            __DIR__ . '/../app/Models' => app_path('Models'),
-            __DIR__ . '/../app/Policies' => app_path('Policies'),
-            __DIR__ . '/../app/Services' => app_path('Services'),
-            __DIR__ . '/../app/Providers/AppServiceProvider.php' => app_path('Providers/AppServiceProvider.php'),
-            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
-            __DIR__ . '/../app/Http/Controllers/Controller.php' => app_path('Http/Controllers/Controller.php'),
-            __DIR__ . '/../app/Http/Controllers/DownloadController.php' => app_path('Http/Controllers/DownloadController.php'),
-            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
-        ], 'public');
+//            __DIR__ . '/../app/Console/Commands' => app_path('Console/Commands'),
+//            __DIR__ . '/../app/Foorm' => app_path('Foorm'),
+            __DIR__ . '/../app/Models/CupGeoArea.php' => app_path('Models/CupGeoArea.php'),
+            __DIR__ . '/../app/Models/CupGeoComune.php' => app_path('Models/CupGeoComune.php'),
+            __DIR__ . '/../app/Models/CupGeoNazione.php' => app_path('Models/CupGeoNazione.php'),
+            __DIR__ . '/../app/Models/CupGeoProvincia.php' => app_path('Models/CupGeoProvincia.php'),
+            __DIR__ . '/../app/Models/CupGeoRegione.php' => app_path('Models/CupGeoRegione.php'),
+//            __DIR__ . '/../app/Services' => app_path('Services'),
+//            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
+//            __DIR__ . '/../app/Http/Controllers/Controller.php' => app_path('Http/Controllers/Controller.php'),
+//            __DIR__ . '/../app/Http/Controllers/DownloadController.php' => app_path('Http/Controllers/DownloadController.php'),
+//            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
+        ], 'models');
+
+        $this->publishes([
+            __DIR__ . '/../app/Policies/CupGeoAreaPolicy.php' => app_path('Policies/CupGeoAreaPolicy.php'),
+            __DIR__ . '/../app/Policies/CupGeoComunePolicy.php' => app_path('Policies/CupGeoComunePolicy.php'),
+            __DIR__ . '/../app/Policies/CupGeoNazionePolicy.php' => app_path('Policies/CupGeoNazionePolicy.php'),
+            __DIR__ . '/../app/Policies/CupGeoProvinciaPolicy.php' => app_path('Policies/CupGeoProvinciaPolicy.php'),
+            __DIR__ . '/../app/Policies/CupGeoRegionePolicy.php' => app_path('Policies/CupGeoRegionePolicy.php'),
+        ], 'policies');
+
 
         //Publishing and overwriting databases folders
         $this->publishes([
-            __DIR__ . '/../database/factories' => database_path('factories'),
+//            __DIR__ . '/../database/factories' => database_path('factories'),
             __DIR__ . '/../database/migrations' => database_path('migrations'),
-            __DIR__ . '/../database/seeds' => database_path('seeds'),
-        ], 'public');
+//            __DIR__ . '/../database/seeds' => database_path('seeds'),
+        ], 'db');
 
         //Publishing and overwriting resources folders
         $this->publishes([
-            __DIR__ . '/../resources/documenti' => base_path('resources/documenti'),
+//            __DIR__ . '/../resources/documenti' => base_path('resources/documenti'),
             __DIR__ . '/../resources/lang' => base_path('resources/lang'),
-            __DIR__ . '/../resources/views/bootstrap4/includes' => base_path('resources/views/bootstrap4/includes'),
-        ], 'public');
+//            __DIR__ . '/../resources/views/bootstrap4/includes' => base_path('resources/views/bootstrap4/includes'),
+        ], 'models-confs');
 
         //Publishing and overwriting public folders
         $this->publishes([

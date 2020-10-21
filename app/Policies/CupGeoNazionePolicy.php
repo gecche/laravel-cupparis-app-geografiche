@@ -3,11 +3,11 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Provincia;
+use App\Models\Regione;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
 
-class ProvinciaPolicy
+class CupGeoNazionePolicy
 {
     use HandlesAuthorization;
 
@@ -15,13 +15,13 @@ class ProvinciaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Provincia  $model
+     * @param  \App\Models\Regione  $model
      * @return mixed
      */
-    public function view(User $user, Provincia $model)
+    public function view(User $user, Regione $model)
     {
         //
-        if ($user && $user->can('view provincia')) {
+        if ($user && $user->can('view regione')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class ProvinciaPolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create provincia')) {
+        if ($user && $user->can('create regione')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class ProvinciaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Provincia $model)
+    public function update(User $user, Regione $model)
     {
         //
-        if ($user && $user->can('edit provincia')) {
+        if ($user && $user->can('edit regione')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class ProvinciaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Provincia $model)
+    public function delete(User $user, Regione $model)
     {
         //
-        if ($user && $user->can('delete provincia')) {
+        if ($user && $user->can('delete regione')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class ProvinciaPolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list provincia')) {
+        if ($user && $user->can('list regione')) {
             return true;
         }
 
@@ -104,13 +104,13 @@ class ProvinciaPolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all provincia')) {
+//        if ($user && $user->can('view all regione')) {
 //        }
 
-        if ($user && $user->can('view provincia')) {
-            return PolicyBuilder::all($builder,Provincia::class);
+        if ($user && $user->can('view regione')) {
+            return PolicyBuilder::all($builder,Regione::class);
         }
 
-        return PolicyBuilder::none($builder,Provincia::class);
+        return PolicyBuilder::none($builder,Regione::class);
     }
 }

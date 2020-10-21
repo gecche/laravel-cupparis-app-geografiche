@@ -3,11 +3,11 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Area;
-use Gecche\PolicyBuilder\Facades\PolicyBuilder;
+use App\Models\Comune;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Gecche\PolicyBuilder\Facades\PolicyBuilder;
 
-class AreaPolicy
+class CupGeoComunePolicy
 {
     use HandlesAuthorization;
 
@@ -15,13 +15,13 @@ class AreaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Area  $model
+     * @param  \App\Models\Comune  $model
      * @return mixed
      */
-    public function view(User $user, Area $model)
+    public function view(User $user, Comune $model)
     {
         //
-        if ($user && $user->can('view area')) {
+        if ($user && $user->can('view comune')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class AreaPolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create area')) {
+        if ($user && $user->can('create comune')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class AreaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Area $model)
+    public function update(User $user, Comune $model)
     {
         //
-        if ($user && $user->can('edit area')) {
+        if ($user && $user->can('edit comune')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class AreaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Area $model)
+    public function delete(User $user, Comune $model)
     {
         //
-        if ($user && $user->can('delete area')) {
+        if ($user && $user->can('delete comune')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class AreaPolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list area')) {
+        if ($user && $user->can('list comune')) {
             return true;
         }
 
@@ -104,14 +104,14 @@ class AreaPolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all area')) {
+//        if ($user && $user->can('view all comune')) {
 //            return Gate::aclAll($builder);
 //        }
 
-        if ($user && $user->can('view area')) {
-            return PolicyBuilder::all($builder,Area::class);
+        if ($user && $user->can('view comune')) {
+            return PolicyBuilder::all($builder,Comune::class);
         }
 
-        return PolicyBuilder::none($builder,Area::class);
+        return PolicyBuilder::none($builder,Comune::class);
     }
 }

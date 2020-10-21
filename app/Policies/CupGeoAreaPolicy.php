@@ -3,11 +3,11 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Regione;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\Area;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-class RegionePolicy
+class CupGeoAreaPolicy
 {
     use HandlesAuthorization;
 
@@ -15,13 +15,13 @@ class RegionePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Regione  $model
+     * @param  \App\Models\Area  $model
      * @return mixed
      */
-    public function view(User $user, Regione $model)
+    public function view(User $user, Area $model)
     {
         //
-        if ($user && $user->can('view regione')) {
+        if ($user && $user->can('view area')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class RegionePolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create regione')) {
+        if ($user && $user->can('create area')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class RegionePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Regione $model)
+    public function update(User $user, Area $model)
     {
         //
-        if ($user && $user->can('edit regione')) {
+        if ($user && $user->can('edit area')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class RegionePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Regione $model)
+    public function delete(User $user, Area $model)
     {
         //
-        if ($user && $user->can('delete regione')) {
+        if ($user && $user->can('delete area')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class RegionePolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list regione')) {
+        if ($user && $user->can('list area')) {
             return true;
         }
 
@@ -104,13 +104,14 @@ class RegionePolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all regione')) {
+//        if ($user && $user->can('view all area')) {
+//            return Gate::aclAll($builder);
 //        }
 
-        if ($user && $user->can('view regione')) {
-            return PolicyBuilder::all($builder,Regione::class);
+        if ($user && $user->can('view area')) {
+            return PolicyBuilder::all($builder,Area::class);
         }
 
-        return PolicyBuilder::none($builder,Regione::class);
+        return PolicyBuilder::none($builder,Area::class);
     }
 }

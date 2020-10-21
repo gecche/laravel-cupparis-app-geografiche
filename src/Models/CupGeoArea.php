@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace Gecche\Cupparis\App\Geografiche\Models;
 
 use Gecche\Cupparis\App\Breeze\Breeze;
 
 /**
  * Breeze (Eloquent) model for T_AREA table.
  */
-class Area extends Breeze
+class CupGeoArea extends Breeze
 {
 
     

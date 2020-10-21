@@ -3,11 +3,11 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Comune;
+use App\Models\Regione;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
 
-class ComunePolicy
+class CupGeoNazionePolicy
 {
     use HandlesAuthorization;
 
@@ -15,13 +15,13 @@ class ComunePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Comune  $model
+     * @param  \App\Models\Regione  $model
      * @return mixed
      */
-    public function view(User $user, Comune $model)
+    public function view(User $user, Regione $model)
     {
         //
-        if ($user && $user->can('view comune')) {
+        if ($user && $user->can('view regione')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class ComunePolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create comune')) {
+        if ($user && $user->can('create regione')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class ComunePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Comune $model)
+    public function update(User $user, Regione $model)
     {
         //
-        if ($user && $user->can('edit comune')) {
+        if ($user && $user->can('edit regione')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class ComunePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Comune $model)
+    public function delete(User $user, Regione $model)
     {
         //
-        if ($user && $user->can('delete comune')) {
+        if ($user && $user->can('delete regione')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class ComunePolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list comune')) {
+        if ($user && $user->can('list regione')) {
             return true;
         }
 
@@ -104,14 +104,13 @@ class ComunePolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all comune')) {
-//            return Gate::aclAll($builder);
+//        if ($user && $user->can('view all regione')) {
 //        }
 
-        if ($user && $user->can('view comune')) {
-            return PolicyBuilder::all($builder,Comune::class);
+        if ($user && $user->can('view regione')) {
+            return PolicyBuilder::all($builder,Regione::class);
         }
 
-        return PolicyBuilder::none($builder,Comune::class);
+        return PolicyBuilder::none($builder,Regione::class);
     }
 }
