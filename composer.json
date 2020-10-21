@@ -1,5 +1,5 @@
 {
-    "name": "gecche/laravel-cupparis-geografiche",
+    "name": "gecche/laravel-cupparis-app-geografiche",
     "description": "Pacchetto per gestione dati geografici (Comuni, Province ecc...) di Cupparis Laravel App",
     "keywords": ["laravel", "cupparis"],
     "license": "MIT",
