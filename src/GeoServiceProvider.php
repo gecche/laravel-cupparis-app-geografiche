@@ -26,15 +26,8 @@ class GeoServiceProvider extends ServiceProvider
             mkdir(config_path('foorms'));
         }
         $this->publishes([
-            __DIR__ . '/../config-packages/auth.php' => config_path('auth.php'),
-            __DIR__ . '/../config-packages/breeze.php' => config_path('breeze.php'),
-            __DIR__ . '/../config-packages/filesystems.php' => config_path('filesystems.php'),
-            __DIR__ . '/../config-packages/foorm.php' => config_path('foorm.php'),
-            __DIR__ . '/../config-packages/image.php' => config_path('image.php'),
-            __DIR__ . '/../config-packages/imagecache.php' => config_path('imagecache.php'),
-            __DIR__ . '/../config-packages/permission.php' => config_path('permission.php'),
-            __DIR__ . '/../config-packages/themes.php' => config_path('themes.php'),
-            __DIR__ . '/../config-packages/foorms/user.php' => config_path('foorms/user.php'),
+//            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
+            __DIR__ . '/../config/foorms/user.php' => config_path('foorms/user.php'),
         ], 'public');
 
 
@@ -88,7 +81,7 @@ class GeoServiceProvider extends ServiceProvider
 
 
 
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+//        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
 
         $this->bootActivityLog();
 
