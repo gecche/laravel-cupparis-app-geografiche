@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Gecche\Breeze\Database\Schema\Blueprint;
 
-class CreateDatafileDizionarioComune extends Migration {
+class CreateDatafileCupGeoComuniIstat extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateDatafileDizionarioComune extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('datafile_dizionario_comune', function(Blueprint $table)
+		Schema::create('datafile_cup_geo_comuni_istat', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('row')->unsigned()->nullable();
@@ -41,7 +41,7 @@ class CreateDatafileDizionarioComune extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('datafile_dizionario_comune');
+		Schema::drop('datafile_cup_geo_comuni_istat');
 	}
 
 }

@@ -4,7 +4,7 @@ namespace Gecche\Cupparis\Geografiche\DatafileModels;
 
 use Gecche\Cupparis\App\Breeze\BreezeDatafile;
 
-class DizionarioComune extends BreezeDatafile {
+class CupGeoComuniIstat extends BreezeDatafile {
 
 	protected $table = 'datafile_dizionario_comune';
 
