@@ -35,21 +35,30 @@ class GeoServiceProvider extends ServiceProvider
 //        ], 'config-foorms');
 
 
+        if (!is_dir(app_path('Models'))) {
+            mkdir(app_path('Models'));
+        }
+        if (!is_dir(app_path('Models/Relations'))) {
+            mkdir(app_path('Models/Relations'));
+        }
         //Publishing and overwriting app folders
-//        $this->publishes([
-////            __DIR__ . '/../app/Console/Commands' => app_path('Console/Commands'),
-////            __DIR__ . '/../app/Foorm' => app_path('Foorm'),
-//            __DIR__ . '/../app/Models/CupGeoArea.php' => app_path('Models/CupGeoArea.php'),
-//            __DIR__ . '/../app/Models/CupGeoComune.php' => app_path('Models/CupGeoComune.php'),
-//            __DIR__ . '/../app/Models/CupGeoNazione.php' => app_path('Models/CupGeoNazione.php'),
-//            __DIR__ . '/../app/Models/CupGeoProvincia.php' => app_path('Models/CupGeoProvincia.php'),
-//            __DIR__ . '/../app/Models/CupGeoRegione.php' => app_path('Models/CupGeoRegione.php'),
-////            __DIR__ . '/../app/Services' => app_path('Services'),
-////            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
-////            __DIR__ . '/../app/Http/Controllers/Controller.php' => app_path('Http/Controllers/Controller.php'),
-////            __DIR__ . '/../app/Http/Controllers/DownloadController.php' => app_path('Http/Controllers/DownloadController.php'),
-////            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
-//        ], 'models');
+        $this->publishes([
+//            __DIR__ . '/../app/Console/Commands' => app_path('Console/Commands'),
+//            __DIR__ . '/../app/Foorm' => app_path('Foorm'),
+            __DIR__ . '/../app/Models/CupGeoNazione.php' => app_path('Models/CupGeoNazione.php'),
+            __DIR__ . '/../app/Models/CupGeoArea.php' => app_path('Models/CupGeoArea.php'),
+            __DIR__ . '/../app/Models/CupGeoRegione.php' => app_path('Models/CupGeoRegione.php'),
+            __DIR__ . '/../app/Models/CupGeoProvincia.php' => app_path('Models/CupGeoProvincia.php'),
+            __DIR__ . '/../app/Models/CupGeoComune.php' => app_path('Models/CupGeoComune.php'),
+            __DIR__ . '/../app/Models/Relations/CupGeoRegioneRelations.php' => app_path('Models/Relations/CupGeoRegioneRelations.php'),
+            __DIR__ . '/../app/Models/Relations/CupGeoProvinciaRelations.php' => app_path('Models/Relations/CupGeoProvinciaRelations.php'),
+            __DIR__ . '/../app/Models/Relations/CupGeoComuneRelations.php' => app_path('Models/Relations/CupGeoComuneRelations.php'),
+//            __DIR__ . '/../app/Services' => app_path('Services'),
+//            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
+//            __DIR__ . '/../app/Http/Controllers/Controller.php' => app_path('Http/Controllers/Controller.php'),
+//            __DIR__ . '/../app/Http/Controllers/DownloadController.php' => app_path('Http/Controllers/DownloadController.php'),
+//            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
+        ], 'models');
 
 //        $this->publishes([
 //            __DIR__ . '/../app/Policies/CupGeoAreaPolicy.php' => app_path('Policies/CupGeoAreaPolicy.php'),
@@ -64,24 +73,11 @@ class GeoServiceProvider extends ServiceProvider
             // Export the migration
             if (! class_exists('CreateCupGeoNazioniTable')) {
                 $this->publishes([
-                    __DIR__ . '/../database/migrations/create_cup_geo_aree_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-4) . '_create_cup_geo_aree_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_regioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-3) . '_create_cup_geo_regioni_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_province_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-2) . '_create_cup_geo_province_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_comuni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-1) . '_create_cup_geo_comuni_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_nazioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_cup_geo_nazioni_table.php'),
-                    // you can add any number of migrations here
-                ], 'migrations');
-            }
-        }
-        if ($this->app->runningInConsole()) {
-            // Export the migration
-            if (! class_exists('CreateCupGeoNazioniTable')) {
-                $this->publishes([
-                    __DIR__ . '/../database/migrations/create_cup_geo_aree_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-4) . '_create_cup_geo_aree_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_regioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-3) . '_create_cup_geo_regioni_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_province_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-2) . '_create_cup_geo_province_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_comuni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-1) . '_create_cup_geo_comuni_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_nazioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_cup_geo_nazioni_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_nazioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-4) . '_create_cup_geo_nazioni_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_aree_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-3) . '_create_cup_geo_aree_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_regioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-2) . '_create_cup_geo_regioni_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_province_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-1) . '_create_cup_geo_province_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_comuni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_cup_geo_comuni_table.php'),
                     // you can add any number of migrations here
                 ], 'migrations');
             }

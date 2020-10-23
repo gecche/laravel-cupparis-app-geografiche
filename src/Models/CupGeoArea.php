@@ -13,7 +13,7 @@ class CupGeoArea extends Breeze
     
 //    use ModelWithUploadsTrait;
 
-    protected $table = 'T_AREA';
+    protected $table = 'aree';
 
     protected $guarded = ['id'];
 
@@ -38,13 +38,13 @@ class CupGeoArea extends Breeze
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 
-    public $columnsForSelectList = ['T_AREA_DESC'];
+    public $columnsForSelectList = ['descrizione'];
      //['id','descrizione'];
 
-    public $defaultOrderColumns = ['T_AREA_DESC' => 'ASC', ];
+    public $defaultOrderColumns = ['descrizione' => 'ASC', ];
      //['cognome' => 'ASC','nome' => 'ASC'];
 
-    public $columnsSearchAutoComplete = ['T_AREA_DESC'];
+    public $columnsSearchAutoComplete = ['descrizione'];
      //['cognome','denominazione','codicefiscale','partitaiva'];
 
     public $nItemsAutoComplete = 20;

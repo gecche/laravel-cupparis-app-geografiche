@@ -6,7 +6,7 @@ use Gecche\Cupparis\App\Breeze\Breeze;
 
 class CupGeoNazione extends Breeze {
 
-    protected $table = 'nazioni';
+    protected $table = 'cup_geo_nazioni';
 
     public $ownerships = true;
     public $timestamps = true;
@@ -16,7 +16,7 @@ class CupGeoNazione extends Breeze {
      * @var array
      */
     protected $fillable = [
-        'codice', 'descrizione',
+        'codice', 'nome_it', 'nome_en',
     ];
 
 
@@ -39,6 +39,12 @@ class CupGeoNazione extends Breeze {
     );
 
     public $columnsForSelectList = ['descrizione'];
+
+
+    public $nItemsAutoComplete = 20;
+    public $nItemsForSelectList = 100;
+    public $itemNoneForSelectList = false;
+    public $fieldsSeparator = ' - ';
 
     public $columnsSearchAutoComplete = array('descrizione');
 }

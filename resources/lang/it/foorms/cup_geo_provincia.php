@@ -45,109 +45,29 @@
  */
 
 return [
-
-    'search' => [
-        'fields' => [
-            'codice' => [
-                'operator' => 'like',
-            ],
-            'nome_it' => [
-                'operator' => 'like',
-            ],
-        ],
+    'metadata' => [
+        'name' => 'provincia|province',
     ],
-    'list' => [
-
-        'dependencies' => [
-          'search' => 'search',
+    'regione_id' => '',
+    'descrizione' => '',
+    'id' => '',
+    'sigla' => '',
+    'regione' => [
+        'metadata' => [
+            'name' => 'regione|regioni',
         ],
-        'pagination' => [
-            'per_page' => 20,
-            'pagination_steps' => [10, 25, 50, 300],
-        ],
-
-        'fields' => [
-            'id' => [
-                'default' => 1,
-            ],
-            'codice' => [
-
-            ],
-            'nome_it' => [
-
-            ],
-            'nome_en' => [
-
-            ],
-        ],
-//        'relations' => [
-//            'cliente' => [
-//
-//            ],
-//        ],
-        'params' => [
-
-        ],
+        'codice' => '',
+        'descrizione' => '',
     ],
-    'edit' => [
-        'fields' => [
-            'id' => [
-
-            ],
-            'codice' => [
-
-            ],
-            'nome_it' => [
-
-            ],
-            'nome_en' => [
-
-            ],
-//            'cliente_id' => [
-//                'nullable' => true,
-//                'options' => 'relation:cliente',
-//            ],
-//            'attivo' => [
-//                'options' => 'boolean',
-//            ],
+    'comuni' => [
+        'metadata' => [
+            'name' => 'comuni|comuni',
         ],
-//        'relations' => [
-//            'tickets' => [
-//                'fields' => [
-//                    'id' => [
-//
-//                    ],
-//                    'codice' => [
-//                        'nullable' => true,
-//                        'options' => 'relation:cliente',
-//                        //'default' => 'pippo',
-//                    ],
-//                    'descrizione' => [
-//
-//                    ],
-//                ],
-//
-//            ],
-//        ],
-        'params' => [
-
-        ],
+        'id' => '',
+        'codice' => '',
+        'descrizione' => '',
+        'codice_catastale' => '',
+        'cap' => '',
+        'prefisso_telefonico' => '',
     ],
-//    'insert' => [
-//
-//    ],
-
-    'view' => [
-        'fields' => [
-            'codice' => [
-                //'default' => 'user'
-            ],
-            'nome_it' => [
-
-            ],
-            'nome_en' => [
-
-            ],
-        ]
-    ]
 ];

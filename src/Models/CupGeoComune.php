@@ -2,20 +2,20 @@
 
 namespace Gecche\Cupparis\App\Geografiche\Models;
 
+use App\Models\CupGeoArea;
+use App\Models\CupGeoProvincia;
+use App\Models\CupGeoRegione;
 use Gecche\Cupparis\App\Breeze\Breeze;
 
 /**
  * Breeze (Eloquent) model for T_COMUNE table.
  */
-class CupGeoComune
+class CupGeoComune extends Breeze
 {
-	use Relations\ComuneRelations;
 
-
-    
 //    use ModelWithUploadsTrait;
 
-    protected $table = 'T_COMUNE';
+    protected $table = 'cup_geo_comuni';
 
     protected $guarded = ['id'];
 
@@ -29,7 +29,9 @@ class CupGeoComune
 
     public static $relationsData = [
 
-			'provincia' => [self::BELONGS_TO, 'related' => Provincia::class, 'table' => 'T_PROVINCIA', 'foreignKey' => 'T_PROVINCIA_ID'],
+        'provincia' => [self::BELONGS_TO, 'related' => CupGeoProvincia::class, 'table' => 'cup_geo_province', 'foreignKey' => 'provincia_id'],
+        'regione' => [self::BELONGS_TO, 'related' => CupGeoRegione::class, 'table' => 'cup_geo_regioni', 'foreignKey' => 'regione_id'],
+        'area' => [self::BELONGS_TO, 'related' => CupGeoArea::class, 'table' => 'cup_geo_aree', 'foreignKey' => 'area_id'],
 
 
 //        'belongsto' => array(self::BELONGS_TO, Comune::class, 'foreignKey' => '<FOREIGNKEYNAME>'),
@@ -41,14 +43,14 @@ class CupGeoComune
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 
-    public $columnsForSelectList = ['T_COMUNE_DESC', 'T_COMUNE_ISTAT'];
-     //['id','descrizione'];
+    public $columnsForSelectList = ['descrizione', 'codice_istat'];
+    //['id','descrizione'];
 
-    public $defaultOrderColumns = ['T_COMUNE_DESC' => 'ASC', ];
-     //['cognome' => 'ASC','nome' => 'ASC'];
+    public $defaultOrderColumns = ['descrizione' => 'ASC',];
+    //['cognome' => 'ASC','nome' => 'ASC'];
 
-    public $columnsSearchAutoComplete = ['T_COMUNE_DESC', 'T_COMUNE_ISTAT'];
-     //['cognome','denominazione','codicefiscale','partitaiva'];
+    public $columnsSearchAutoComplete = ['descrizione', 'codice_istat'];
+    //['cognome','denominazione','codicefiscale','partitaiva'];
 
     public $nItemsAutoComplete = 20;
     public $nItemsForSelectList = 100;

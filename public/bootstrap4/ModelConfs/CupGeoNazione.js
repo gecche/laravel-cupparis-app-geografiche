@@ -1,6 +1,6 @@
-var ModelNazione = {
+var ModelCupGeoNazione = {
     search : {
-      fields : ['descrizione']
+        fields : ['codice','nome_it']
     },
     listEdit : {
 
@@ -13,8 +13,4 @@ var ModelNazione = {
             }
         }
     }
-}
-
-var ManageNazioni = {
-    collapsed: true,
 }
