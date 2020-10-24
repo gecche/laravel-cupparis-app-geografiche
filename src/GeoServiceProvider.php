@@ -22,25 +22,16 @@ class GeoServiceProvider extends ServiceProvider
 
 
         //Publishing configs
-        if (!is_dir(config_path('foorms'))) {
-            mkdir(config_path('foorms'));
-        }
-//        $this->publishes([
-////            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
-//            __DIR__ . '/../config/foorms/cup_geo_area.php' => config_path('foorms/cup_geo_area.php'),
-//            __DIR__ . '/../config/foorms/cup_geo_comune.php' => config_path('foorms/cup_geo_comune.php'),
-//            __DIR__ . '/../config/foorms/cup_geo_nazione.php' => config_path('foorms/cup_geo_nazione.php'),
-//            __DIR__ . '/../config/foorms/cup_geo_provincia.php' => config_path('foorms/cup_geo_provincia.php'),
-//            __DIR__ . '/../config/foorms/cup_geo_regione.php' => config_path('foorms/cup_geo_regione.php'),
-//        ], 'config-foorms');
+        $this->publishes([
+//            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
+            __DIR__ . '/../config/foorms/cup_geo_area.php' => config_path('foorms/cup_geo_area.php'),
+            __DIR__ . '/../config/foorms/cup_geo_comune.php' => config_path('foorms/cup_geo_comune.php'),
+            __DIR__ . '/../config/foorms/cup_geo_nazione.php' => config_path('foorms/cup_geo_nazione.php'),
+            __DIR__ . '/../config/foorms/cup_geo_provincia.php' => config_path('foorms/cup_geo_provincia.php'),
+            __DIR__ . '/../config/foorms/cup_geo_regione.php' => config_path('foorms/cup_geo_regione.php'),
+        ], 'config-foorms');
 
 
-        if (!is_dir(app_path('Models'))) {
-            mkdir(app_path('Models'));
-        }
-        if (!is_dir(app_path('Models/Relations'))) {
-            mkdir(app_path('Models/Relations'));
-        }
         //Publishing and overwriting app folders
         $this->publishes([
 //            __DIR__ . '/../app/Console/Commands' => app_path('Console/Commands'),
@@ -96,14 +87,10 @@ class GeoServiceProvider extends ServiceProvider
 //        ], 'models-confs');
 
         //Publishing and overwriting public folders
-//        $this->publishes([
-//            __DIR__ . '/../public/bootstrap4' => public_path('bootstrap4'),
-//            __DIR__ . '/../public/images' => public_path('images'),
-//            //__DIR__ . '/../public/js/edit_area' => public_path('js/edit_area'),
-//            //__DIR__ . '/../public/crud-vue/components' => public_path('crud-vue/components'),
-//            //__DIR__ . '/../public/crud-vue/ModelConfs' => public_path('crud-vue/ModelConfs'),
-//            //__DIR__ . '/../public/crud-vue/plugins' => public_path('crud-vue/plugins'),
-//        ], 'public');
+        $this->publishes([
+            __DIR__ . '/../public/admin/ModelConfs' => public_path('admin/ModelConfs'),
+            __DIR__ . '/../public/admin/pages' => public_path('admin/pages'),
+        ], 'public');
 //        $this->publishes([
 //            __DIR__ . '/../public/bootstrap4/components' => public_path('bootstrap4/components'),
 //            //__DIR__ . '/../public/images' => public_path('images'),

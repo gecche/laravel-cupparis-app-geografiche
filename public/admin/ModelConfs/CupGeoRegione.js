@@ -2,11 +2,11 @@ var CupGeoRegione = {
     search : {
         buttonsClass : 'bg-gradient-info overlay-dark overlay-opacity-4',
         fields: [
-            'T_AREA_ID',
-            'T_REGIONE_DESC',
+            'area_id',
+            'descrizione',
         ],
         fieldsConfig : {
-            'T_AREA_ID': {
+            'area_id': {
                 type: "w-select",
             },
         }
@@ -15,8 +15,8 @@ var CupGeoRegione = {
         modelName : 'regione',
         fields: [
             'id',
-            'T_REGIONE_CODICE',
-            'T_REGIONE_DESC',
+            'codice',
+            'descrizione',
             'area'
 
         ],
@@ -27,17 +27,17 @@ var CupGeoRegione = {
             'action-delete-selected',
         ],
         orderFields : {
-            'T_REGIONE_CODICE':'T_REGIONE_CODICE',
-            'T_REGIONE_DESC':'T_REGIONE_DESC'
+            'codice':'codice',
+            'descrizione':'descrizione'
         },
         fieldsConfig: {
-			'T_REGIONE_DESC' : {
+			'descrizione' : {
 			},
-            'T_REGIONE_CODICE' : {
+            'codice' : {
             },
             area : {
                 type : 'w-belongsto',
-                labelFields : ['T_AREA_DESC']
+                labelFields : ['descrizione']
             },
 
         },
@@ -49,7 +49,7 @@ var CupGeoRegione = {
     listRidotta: {
         modelName : 'regione',
         fields: [
-            'T_REGIONE_DESC',
+            'descrizione',
         ],
         actions : [
             'action-insert',
@@ -57,23 +57,23 @@ var CupGeoRegione = {
             'action-delete',
         ],
         orderFields : {
-            'T_REGIONE_CODICE':'T_REGIONE_CODICE',
-            'T_REGIONE_DESC':'T_REGIONE_DESC'
+            'codice':'codice',
+            'descrizione':'descrizione'
         },
         fieldsConfig: {
-            'T_REGIONE_DESC' : {
+            'descrizione' : {
                 type : 'w-custom',
                 mounted : function () {
                     var that = this;
-                    that.value = that.modelData['T_REGIONE_DESC'] + " - " + that.modelData.area['T_AREA_DESC']
-                        + " (" + that.modelData['T_REGIONE_CODICE'] + ")";
+                    that.value = that.modelData['descrizione'] + " - " + that.modelData.area['descrizione']
+                        + " (" + that.modelData['codice'] + ")";
                 }
             },
-            'T_REGIONE_CODICE' : {
+            'codice' : {
             },
             area : {
                 type : 'w-belongsto',
-                labelFields : ['T_AREA_DESC']
+                labelFields : ['descrizione']
             },
 
         },
@@ -86,12 +86,12 @@ var CupGeoRegione = {
         modelName : 'regione',
         actions : ['action-save','action-back'],
         fields: [
-            'T_REGIONE_CODICE',
-			'T_REGIONE_DESC',
-            'T_AREA_ID',
+            'codice',
+			'descrizione',
+            'area_id',
         ],
         fieldsConfig: {
-			'T_AREA_ID' : {
+			'area_id' : {
                 type : "w-select"
 			},
 

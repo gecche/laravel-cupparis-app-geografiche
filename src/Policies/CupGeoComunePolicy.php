@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Comune;
+use App\Models\CupGeoComune;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
 
@@ -15,13 +15,13 @@ class CupGeoComunePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Comune  $model
+     * @param  \App\Models\CupGeoComune  $model
      * @return mixed
      */
-    public function view(User $user, Comune $model)
+    public function view(User $user, CupGeoComune $model)
     {
         //
-        if ($user && $user->can('view comune')) {
+        if ($user && $user->can('view cup_geo_comune')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class CupGeoComunePolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create comune')) {
+        if ($user && $user->can('create cup_geo_comune')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class CupGeoComunePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Comune $model)
+    public function update(User $user, CupGeoComune $model)
     {
         //
-        if ($user && $user->can('edit comune')) {
+        if ($user && $user->can('edit cup_geo_comune')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class CupGeoComunePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Comune $model)
+    public function delete(User $user, CupGeoComune $model)
     {
         //
-        if ($user && $user->can('delete comune')) {
+        if ($user && $user->can('delete cup_geo_comune')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class CupGeoComunePolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list comune')) {
+        if ($user && $user->can('list cup_geo_comune')) {
             return true;
         }
 
@@ -104,14 +104,14 @@ class CupGeoComunePolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all comune')) {
+//        if ($user && $user->can('view all cup_geo_comune')) {
 //            return Gate::aclAll($builder);
 //        }
 
-        if ($user && $user->can('view comune')) {
-            return PolicyBuilder::all($builder,Comune::class);
+        if ($user && $user->can('view cup_geo_comune')) {
+            return PolicyBuilder::all($builder,CupGeoComune::class);
         }
 
-        return PolicyBuilder::none($builder,Comune::class);
+        return PolicyBuilder::none($builder,CupGeoComune::class);
     }
 }

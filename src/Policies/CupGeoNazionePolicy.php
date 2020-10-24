@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Regione;
+use App\Models\CupGeoNazione;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
 
@@ -15,13 +15,13 @@ class CupGeoNazionePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Regione  $model
+     * @param  \App\Models\CupGeoNazione  $model
      * @return mixed
      */
-    public function view(User $user, Regione $model)
+    public function view(User $user, CupGeoNazione $model)
     {
         //
-        if ($user && $user->can('view regione')) {
+        if ($user && $user->can('view cup_geo_nazione')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class CupGeoNazionePolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create regione')) {
+        if ($user && $user->can('create cup_geo_nazione')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class CupGeoNazionePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Regione $model)
+    public function update(User $user, CupGeoNazione $model)
     {
         //
-        if ($user && $user->can('edit regione')) {
+        if ($user && $user->can('edit cup_geo_nazione')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class CupGeoNazionePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Regione $model)
+    public function delete(User $user, CupGeoNazione $model)
     {
         //
-        if ($user && $user->can('delete regione')) {
+        if ($user && $user->can('delete cup_geo_nazione')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class CupGeoNazionePolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list regione')) {
+        if ($user && $user->can('list cup_geo_nazione')) {
             return true;
         }
 
@@ -104,13 +104,13 @@ class CupGeoNazionePolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all regione')) {
+//        if ($user && $user->can('view all cup_geo_nazione')) {
 //        }
 
-        if ($user && $user->can('view regione')) {
-            return PolicyBuilder::all($builder,Regione::class);
+        if ($user && $user->can('view cup_geo_nazione')) {
+            return PolicyBuilder::all($builder,CupGeoNazione::class);
         }
 
-        return PolicyBuilder::none($builder,Regione::class);
+        return PolicyBuilder::none($builder,CupGeoNazione::class);
     }
 }

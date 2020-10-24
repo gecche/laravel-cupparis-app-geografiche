@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Policies;
+namespace Gecche\Cupparis\App\Geografiche\Policies;
 
 use App\Models\User;
-use App\Models\CupGeoRegione;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\CupGeoAreaMondiale;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CupGeoRegionePolicy
+class CupGeoAreaMondialePolicy
 {
     use HandlesAuthorization;
 
@@ -15,13 +15,13 @@ class CupGeoRegionePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\CupGeoRegione  $model
+     * @param  \App\Models\CupGeoAreaMondiale  $model
      * @return mixed
      */
-    public function view(User $user, CupGeoRegione $model)
+    public function view(User $user, CupGeoAreaMondiale $model)
     {
         //
-        if ($user && $user->can('view cup_geo_regione')) {
+        if ($user && $user->can('view cup_geo_area_mondiale')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class CupGeoRegionePolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create cup_geo_regione')) {
+        if ($user && $user->can('create cup_geo_area_mondiale')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class CupGeoRegionePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, CupGeoRegione $model)
+    public function update(User $user, CupGeoAreaMondiale $model)
     {
         //
-        if ($user && $user->can('edit cup_geo_regione')) {
+        if ($user && $user->can('edit cup_geo_area_mondiale')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class CupGeoRegionePolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, CupGeoRegione $model)
+    public function delete(User $user, CupGeoAreaMondiale $model)
     {
         //
-        if ($user && $user->can('delete cup_geo_regione')) {
+        if ($user && $user->can('delete cup_geo_area_mondiale')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class CupGeoRegionePolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list cup_geo_regione')) {
+        if ($user && $user->can('list cup_geo_area_mondiale')) {
             return true;
         }
 
@@ -104,13 +104,14 @@ class CupGeoRegionePolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all cup_geo_regione')) {
+//        if ($user && $user->can('view all cup_geo_area_mondiale')) {
+//            return Gate::aclAll($builder);
 //        }
 
-        if ($user && $user->can('view cup_geo_regione')) {
-            return PolicyBuilder::all($builder,CupGeoRegione::class);
+        if ($user && $user->can('view cup_geo_area_mondiale')) {
+            return PolicyBuilder::all($builder,CupGeoAreaMondiale::class);
         }
 
-        return PolicyBuilder::none($builder,CupGeoRegione::class);
+        return PolicyBuilder::none($builder,CupGeoAreaMondiale::class);
     }
 }

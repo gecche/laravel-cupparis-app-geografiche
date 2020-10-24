@@ -18,7 +18,7 @@ class CupGeoProvincia extends Breeze
 
 //    use ModelWithUploadsTrait;
 
-    protected $table = 'province';
+    protected $table = 'cup_geo_province';
 
     protected $guarded = ['id'];
 
