@@ -25,7 +25,8 @@ class CreateCupGeoProvinceTable extends Migration {
 			$table->foreign('area_id')->references('id')->on('cup_geo_aree')->onDelete('restrict')->onUpdate('cascade');
 			$table->integer('regione_id')->unsigned()->index();
 			$table->foreign('regione_id')->references('id')->on('cup_geo_regioni')->onDelete('restrict')->onUpdate('cascade');
-			
+            $table->boolean('attivo')->default(1);// varchar(50) DEFAULT NULL,
+
 			
 
 		});

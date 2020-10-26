@@ -19,6 +19,7 @@ class CreateCupGeoAreeTable extends Migration
             $table->increments('id');
             $table->string('codice', 3)->unique();
             $table->string('descrizione')->unique();
+            $table->boolean('attivo')->default(1);// varchar(50) DEFAULT NULL,
         });
     }
 

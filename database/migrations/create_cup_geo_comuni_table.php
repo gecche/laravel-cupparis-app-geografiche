@@ -33,6 +33,7 @@ class CreateCupGeoComuniTable extends Migration {
             $table->string('prefisso',6)->nullable();
             $table->decimal('lat',10,8)->nullable();
             $table->decimal('lng',11,8)->nullable();
+            $table->boolean('attivo')->default(1);// varchar(50) DEFAULT NULL,
 
 		});
 	}

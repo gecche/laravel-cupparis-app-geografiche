@@ -1,0 +1,57 @@
+{
+    "foorm": {
+        "entities": {
+            "cup_geo_continente": {
+            },
+            "cup_geo_area_mondiale": {
+            },
+            "cup_geo_nazione": {
+            },
+            "cup_geo_area": {
+            },
+            "cup_geo_regione": {
+            },
+            "cup_geo_provincia": {
+            },
+            "cup_geo_comune": {
+            }
+        }
+    },
+    "modelconfs": {
+        "files": [
+            "CupGeoAreaContinente.js",
+            "CupGeoAreaMondiale.js",
+            "CupGeoNazione.js",
+            "CupGeoArea.js",
+            "CupGeoRegione.js",
+            "CupGeoProvincia.js",
+            "CupGeoComune.js"
+        ]
+    },
+    "permissions": {
+        "models": [
+            "cup_geo_continente",
+            "cup_geo_area_mondiale",
+            "cup_geo_nazione",
+            "cup_geo_area",
+            "cup_geo_regione",
+            "cup_geo_provincia",
+            "cup_geo_comune"
+        ],
+        "other_permissions": {
+            "web": [
+            ]
+        }
+    },
+    "policies": {
+        "models": {
+            "\\App\\Models\\CupGeoContinente": "\\App\\Policies\\CupGeoContinentePolicy",
+            "\\App\\Models\\CupGeoAreaMondiale": "\\App\\Policies\\CupGeoAreaMondialePolicy",
+            "\\App\\Models\\CupGeoNazione": "\\App\\Policies\\CupGeoNazionePolicy",
+            "\\App\\Models\\CupGeoArea": "\\App\\Policies\\CupGeoAreaPolicy",
+            "\\App\\Models\\CupGeoRegione": "\\App\\Policies\\CupGeoRegionePolicy",
+            "\\App\\Models\\CupGeoProvincia": "\\App\\Policies\\CupGeoProvinciaPolicy",
+            "\\App\\Models\\CupGeoComune": "\\App\\Policies\\CupGeoComunePolicy"
+        }
+    }
+}
