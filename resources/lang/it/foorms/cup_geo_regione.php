@@ -46,29 +46,10 @@
 
 return [
     'metadata' => [
-        'name' => 'provincia|province',
+        'name' => 'regione|regioni',
     ],
-    'regione_id' => 'regione',
-    'area_id' => 'regione',
+    'codice' => 'codice',
     'nome' => 'nome',
-    'sigla' => 'sigla',
-    'codice' => 'codice territoriale',
-    'codice_nuovo' => 'codice territoriale (nuovo)',
+    'area_id' => 'area',
     'attivo' => 'attiva',
-    'regione' => [
-        'metadata' => [
-            'name' => 'regione|regioni',
-        ],
-        'codice' => '',
-        'nome' => '',
-    ],
-    'comuni' => [
-        'metadata' => [
-            'name' => 'comuni|comuni',
-        ],
-        'nome' => '',
-        'codice_catastale' => '',
-        'cap' => '',
-        'prefisso_telefonico' => '',
-    ],
 ];

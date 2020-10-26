@@ -46,29 +46,20 @@
 
 return [
     'metadata' => [
-        'name' => 'provincia|province',
+        'name' => 'comune|comuni',
     ],
     'regione_id' => 'regione',
-    'area_id' => 'regione',
+    'area_id' => 'area',
+    'provincia_id' => 'provincia',
+    'nazione_id' => 'nazione',
     'nome' => 'nome',
-    'sigla' => 'sigla',
-    'codice' => 'codice territoriale',
-    'codice_nuovo' => 'codice territoriale (nuovo)',
-    'attivo' => 'attiva',
-    'regione' => [
-        'metadata' => [
-            'name' => 'regione|regioni',
-        ],
-        'codice' => '',
-        'nome' => '',
-    ],
-    'comuni' => [
-        'metadata' => [
-            'name' => 'comuni|comuni',
-        ],
-        'nome' => '',
-        'codice_catastale' => '',
-        'cap' => '',
-        'prefisso_telefonico' => '',
-    ],
+    'sigla_provincia' => 'sigla provincia',
+    'codice_istat' => 'codice istat',
+    'codice_catastale' => 'codice catastale',
+    'attivo' => 'attivo',
+    'capoluogo' => 'capoluogo provincia',
+    'cap' => 'CAP',
+    'prefisso' => 'prefisso tel.',
+    'lat' => 'latitudine',
+    'lng' => 'longitudine',
 ];

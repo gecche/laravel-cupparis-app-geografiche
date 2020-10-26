@@ -46,29 +46,17 @@
 
 return [
     'metadata' => [
-        'name' => 'provincia|province',
+        'name' => 'nazione|nazioni',
     ],
-    'regione_id' => 'regione',
-    'area_id' => 'regione',
-    'nome' => 'nome',
-    'sigla' => 'sigla',
-    'codice' => 'codice territoriale',
-    'codice_nuovo' => 'codice territoriale (nuovo)',
+    'codice_istat' => 'codice istat',
+    'codice_catastale' => 'codice catastale',
+    'codice_iso_2' => 'codice iso (2 car.)',
+    'codice_iso_3' => 'codice iso (3 car.)',
+    'nome_it' => 'nome (IT)',
+    'nome_en' => 'nome (EN)',
+    'stato di appartenenza' => '',
+    'continente_id' => 'continente',
+    'area_id' => 'area',
+    'flag' => 'bandiera presente',
     'attivo' => 'attiva',
-    'regione' => [
-        'metadata' => [
-            'name' => 'regione|regioni',
-        ],
-        'codice' => '',
-        'nome' => '',
-    ],
-    'comuni' => [
-        'metadata' => [
-            'name' => 'comuni|comuni',
-        ],
-        'nome' => '',
-        'codice_catastale' => '',
-        'cap' => '',
-        'prefisso_telefonico' => '',
-    ],
 ];

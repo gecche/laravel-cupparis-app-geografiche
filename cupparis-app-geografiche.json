@@ -1,21 +1,14 @@
 {
     "foorm": {
-        "entities": {
-            "cup_geo_continente": {
-            },
-            "cup_geo_area_mondiale": {
-            },
-            "cup_geo_nazione": {
-            },
-            "cup_geo_area": {
-            },
-            "cup_geo_regione": {
-            },
-            "cup_geo_provincia": {
-            },
-            "cup_geo_comune": {
-            }
-        }
+        "entities": [
+            "cup_geo_continente",
+            "cup_geo_area_mondiale",
+            "cup_geo_nazione",
+            "cup_geo_area",
+            "cup_geo_regione",
+            "cup_geo_provincia",
+            "cup_geo_comune"
+        ]
     },
     "modelconfs": {
         "files": [
