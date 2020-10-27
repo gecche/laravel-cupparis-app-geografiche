@@ -2,7 +2,7 @@
 
 namespace App\DatafileProviders;
 
-class CupGeoComuniIstat extends \Gecche\Cupparis\Geografiche\DatafileProviders\CupGeoComuniIstat
+class CupGeoComuniIstat extends \Gecche\Cupparis\App\Geografiche\DatafileProviders\CupGeoComuniIstat
 {
 
 }

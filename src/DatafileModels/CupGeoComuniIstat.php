@@ -1,6 +1,6 @@
 <?php
 
-namespace Gecche\Cupparis\Geografiche\DatafileModels;
+namespace Gecche\Cupparis\App\Geografiche\DatafileModels;
 
 use Gecche\Cupparis\App\Breeze\BreezeDatafile;
 

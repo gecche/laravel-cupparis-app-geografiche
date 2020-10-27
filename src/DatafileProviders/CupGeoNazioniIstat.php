@@ -1,6 +1,6 @@
 <?php
 
-namespace Gecche\Cupparis\Geografiche\DatafileProviders;
+namespace Gecche\Cupparis\App\Geografiche\DatafileProviders;
 
 use App\Models\Area;
 use App\Models\Regione;

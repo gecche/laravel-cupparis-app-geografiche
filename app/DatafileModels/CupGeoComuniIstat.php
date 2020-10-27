@@ -2,6 +2,6 @@
 
 namespace App\DatafileModels;
 
-class CupGeoComuniIstat extends \Gecche\Cupparis\Geografiche\DatafileModels\CupGeoComuniIstat {
+class CupGeoComuniIstat extends \Gecche\Cupparis\App\Geografiche\DatafileModels\CupGeoComuniIstat {
 
 }
