@@ -4,9 +4,9 @@ namespace Gecche\Cupparis\Geografiche\DatafileModels;
 
 use Gecche\Cupparis\App\Breeze\BreezeDatafile;
 
-class CupGeoComuniIstat extends BreezeDatafile {
+class CupGeoNazioniIstat extends BreezeDatafile {
 
-	protected $table = 'datafile_cup_geo_comuni_istat';
+	protected $table = 'datafile_cup_geo_nazioni_istat';
 
 //    public static $rules = array(
 //        'GTComIstat' => 'required|numeric|unique_datafile:datafile_comuni,GTComIstat',
