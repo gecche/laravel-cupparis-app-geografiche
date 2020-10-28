@@ -18,7 +18,7 @@ class CreateCupGeoRegioniTable extends Migration
         Schema::create('cup_geo_regioni', function (Blueprint $table) {
             $table->increments('id');
             $table->string('codice', 3)->unique();
-            $table->string('descrizione')->unique();
+            $table->string('nome_it')->unique();
             $table->integer('area_id')->unsigned()->index();
             $table->foreign('area_id')->references('id')->on('cup_geo_aree')->onDelete('restrict')->onUpdate('cascade');
             $table->boolean('attivo')->default(1);// varchar(50) DEFAULT NULL,

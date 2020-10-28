@@ -2,14 +2,13 @@
 
 namespace Gecche\Cupparis\App\Geografiche\DatafileProviders;
 
-use App\Models\Area;
-use App\Models\Regione;
-use Gecche\Cupparis\Datafile\Breeze\BreezeDatafile;
+use App\Models\CupGeoArea;
+use App\Models\CupGeoNazione;
+use App\Models\CupGeoProvincia;
+use App\Models\CupGeoRegione;
 use Gecche\Cupparis\Datafile\Breeze\BreezeDatafileProvider;
-use App\Models\Provincia;
 use Gecche\Cupparis\Datafile\Breeze\Contracts\BreezeDatafileInterface;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 
 class CupGeoComuniIstatXls extends BreezeDatafileProvider
 {
@@ -17,8 +16,8 @@ class CupGeoComuniIstatXls extends BreezeDatafileProvider
      * array del tipo di datafile, ha la seguente forma: array( 'headers' => array( 'header1' => array( 'datatype' => 'string|int|data...', (default string) 'checks' => array( 'checkCallback1' => array(params => paramsArray,type => error|alert), ... 'checkCallbackN' => array(params => paramsArray,type => error|alert), ), (deafult array()) 'transforms' => array( 'transformCallback1' => array(params), ... 'transformCallbackN' => array(params), ), (default array()) 'blocking' => true|false (default false) ) ... 'headerN' => array( 'datatype' => 'string|int|data...', (default string) 'checks' => array( 'checkCallback1' => array(params), ... 'checkCallbackN' => array(params), ), (deafult array()) 'transforms' => array( 'transformCallback1' => array(params), ... 'transformCallbackN' => array(params), ), (default array()) ) 'peremesso' => 'permesso_string' (default 'datafile_upload') 'blocking' => true|false (default false) ) ) I chechCallbacks e transformCallbacks sono dei nomi di funzioni di questo modello (o sottoclassi) dichiarati come protected e con il nome del callback preceduto da _check_ o _transform_ e che accettano i parametri specificati I checkCallbacks hanno anche un campo che specifica se si tratta di errore o di alert I checks servono per verificare se i dati del campo corrispondono ai requisiti richiesti I transforms trasformano i dati in qualcos'altro (es: formato della data da gg/mm/yyyy a yyyy-mm-gg) Vengono eseguiti prima tutti i checks e poi tutti i transforms (nell'ordine specificato dall'array) Blocking invece definisce se un errore nei check di una riga corrisponde al blocco dell'upload datafile o se si può andare avanti saltando quella riga permesso è se il
      */
 
-    protected $modelDatafileName = \App\DatafileModels\DizionarioComune::class;
-    protected $modelTargetName = \App\Models\Comune::class;
+    protected $modelDatafileName = \App\DatafileModels\CupGeoComuniIstat::class;
+    protected $modelTargetName = \App\Models\CupGeoComune::class;
 
     protected $zip = false;
     protected $zipDir = false;
@@ -29,84 +28,77 @@ class CupGeoComuniIstatXls extends BreezeDatafileProvider
         'skipEmptyLines' => true,  // Se la procedura salta le righe vuote che trova
         'stopAtEmptyLine' => true, // Se la procedura di importazione si ferma alla prima riga vuota incontrata
         'startingColumn' => 'A',
-        'endingColumn' => 'S',
+        'endingColumn' => 'W',
     ];
     protected $filetype = 'excel'; //csv, fixed_text, excel
 
+    protected $nazioneItaliaId;
     /*
      * HEADERS array header => datatype
      */
     public $headers = array(
 
-//        'Codice Ripartizione Geografica',
-//        'Ripartizione geografica',
-//        'Codice Regione',
-//        'Denominazione regione',
-//        'Codice Provincia (Storico)(1)',
-//        "Denominazione dell'Unità territoriale sovracomunale \n(valida a fini statistici)",
-//        'Codice Comune formato alfanumerico',
-//        'Denominazione in italiano',
-//        '',
-//        '',
-//        "Codice dell'Unità territoriale sovracomunale \n(valida a fini statistici)",
+        "Codice Regione",
+        "Codice dell'Unità territoriale sovracomunale \n(valida a fini statistici)",
+        "Codice Provincia (Storico)(1)",
+        "Progressivo del Comune (2)",
+        "Codice Comune formato alfanumerico",
+        "Denominazione (Italiana e straniera)",
+        "Denominazione in italiano",
+        "Denominazione altra lingua",
+        "Codice Ripartizione Geografica",
+        "Ripartizione geografica",
+        "Denominazione regione",
+        "Denominazione dell'Unità territoriale sovracomunale \n(valida a fini statistici)",
+        "Tipologia di Unità territoriale sovracomunale",
+        "Flag Comune capoluogo di provincia/città metropolitana/libero consorzio",
+        "Sigla automobilistica",
+        "Codice Comune formato numerico",
+        "Codice Comune numerico con 110 province (dal 2010 al 2016)",
+        "Codice Comune numerico con 107 province (dal 2006 al 2009)",
+        "Codice Comune numerico con 103 province (dal 1995 al 2005)",
+        "Codice Catastale del comune",
+        "Codice NUTS1 2010",
+        "Codice NUTS2 2010 (3)",
+        "Codice NUTS3 2010",
 
-"Codice Regione",
-"Codice dell'Unità territoriale sovracomunale \n(valida a fini statistici)",
-"Codice Provincia (Storico)(1)",
-"Progressivo del Comune (2)",
-"Codice Comune formato alfanumerico",
-"Denominazione (Italiana e straniera)",
-"Denominazione in italiano",
-"Denominazione altra lingua",
-"Codice Ripartizione Geografica",
-"Ripartizione geografica",
-"Denominazione regione",
-"Denominazione dell'Unità territoriale sovracomunale \n(valida a fini statistici)",
-"Flag Comune capoluogo di provincia/città metropolitana/libero consorzio",
-"Sigla automobilistica",
-"Codice Comune formato numerico",
-"Codice Comune numerico con 110 province (dal 2010 al 2016)",
-"Codice Comune numerico con 107 province (dal 2006 al 2009)",
-"Codice Comune numerico con 103 province (dal 1995 al 2005)",
-"Codice Catastale del comune",
-
-//
-//        "Codice Ripartizione Geografica",
-//        "Ripartizione geografica",
-//        "Codice Regione",
-//        "Denominazione regione",
-//        "Codice Provincia",
-//        "Denominazione dell'Unità territoriale sovracomunale",
-//        "Codice Comune",
-//        "Denominazione in italiano",
-//        "Codice dell'Unità territoriale sovracomunale",
     );
 
 
     public $associativeHeaders = [
 
-        "Codice Regione" => "codice_regione",
-        "Codice dell'Unità territoriale sovracomunale \n(valida a fini statistici)" => "codice_provincia_nuovo",
-        "Codice Provincia (Storico)(1)" => "codice_provincia",
-        "Codice Comune formato alfanumerico" => "codice_comune",
-        "Denominazione in italiano" => "comune",
-        "Codice Ripartizione Geografica" => "codice_area",
-        "Ripartizione geografica" => "area",
-        "Denominazione regione" => "regione",
-        "Denominazione dell'Unità territoriale sovracomunale \n(valida a fini statistici)" => "provincia",
-        "Flag Comune capoluogo di provincia/città metropolitana/libero consorzio" => "capoluogo_comune",
-        "Sigla automobilistica" => "sigla_provincia",
-        "Codice Catastale del comune" => "codice_catastale_comune",
-
+        "Codice Regione" => 'codice_regione',
+        "Codice dell'Unità territoriale sovracomunale \n(valida a fini statistici)" => 'codice_provincia_nuovo',
+        "Codice Provincia (Storico)(1)" => 'codice_provincia',
+        "Progressivo del Comune (2)" => 'progressivo_comune',
+        "Codice Comune formato alfanumerico" => 'codice_istat',
+        "Denominazione (Italiana e straniera)" => 'nome_all',
+        "Denominazione in italiano" => 'nome_it',
+        "Denominazione altra lingua" => 'nome_altra_lingua',
+        "Codice Ripartizione Geografica" => 'codice_area',
+        "Ripartizione geografica" => 'area',
+        "Denominazione regione" => 'regione',
+        "Denominazione dell'Unità territoriale sovracomunale \n(valida a fini statistici)" => 'provincia',
+        "Tipologia di Unità territoriale sovracomunale" => 'tipo_provincia',
+        "Flag Comune capoluogo di provincia/città metropolitana/libero consorzio" => 'capoluogo',
+        "Sigla automobilistica" => 'sigla_provincia',
+        "Codice Comune formato numerico" => 'codice_istat_numerico',
+        "Codice Comune numerico con 110 province (dal 2010 al 2016)" => 'codice_istat_numerico_110',
+        "Codice Comune numerico con 107 province (dal 2006 al 2009)" => 'codice_istat_numerico_107',
+        "Codice Comune numerico con 103 province (dal 1995 al 2005)" => 'codice_istat_numerico_103',
+        "Codice Catastale del comune" => 'codice_catastale_comune',
+        "Codice NUTS1 2010" => 'codice_nuts_1',
+        "Codice NUTS2 2010 (3)" => 'codice_nuts_2',
+        "Codice NUTS3 2010" => 'codice_nuts_3',
 
     ];
 
     public function associateRow(BreezeDatafileInterface $modelDatafile)
     {
-        $codice = $modelDatafile->codice_comune;
+        $codice = $modelDatafile->codice_istat;
         $modelTargetName = $this->modelTargetName;
-        return $modelTargetName::where('T_COMUNE_ISTAT',$codice)->firstOrNew([
-            'T_COMUNE_ISTAT' => $codice,
+        return $modelTargetName::where('codice_istat', $codice)->firstOrNew([
+            'codice_istat' => $codice,
         ]);
 
     }
@@ -115,41 +107,51 @@ class CupGeoComuniIstatXls extends BreezeDatafileProvider
     {
 
         $codiceArea = $modelDatafile->codice_area;
-        $area = Area::where('T_AREA_CODICE', $codiceArea)->firstOrCreate(
-            ['T_AREA_CODICE' => $codiceArea,
-                'T_AREA_DESC' => $modelDatafile->area
+        $area = CupGeoArea::where('codice', $codiceArea)->firstOrCreate(
+            ['codice' => $codiceArea,
+                'nome_it' => $modelDatafile->area
             ]
         );
 
         $codiceRegione = $modelDatafile->codice_regione;
-        $regione = Regione::where('T_REGIONE_CODICE', $codiceRegione)->firstOrCreate(
+        $regione = CupGeoRegione::where('codice', $codiceRegione)->firstOrCreate(
             [
-                'T_REGIONE_CODICE' => $codiceRegione,
-                'T_REGIONE_DESC' => $modelDatafile->regione,
-                'T_AREA_ID' => $area->getKey(),
+                'codice' => $codiceRegione,
+                'nome_it' => $modelDatafile->regione,
+                'area_id' => $area->getKey(),
 
             ]
         );
 
         $codiceProvincia = $modelDatafile->codice_provincia;
-        $provincia = Provincia::where('T_PROVINCIA_CODICE', $codiceProvincia)->firstOrCreate(
+        $provincia = CupGeoProvincia::where('codice', $codiceProvincia)->firstOrCreate(
             [
-                'T_PROVINCIA_CODICE' => $codiceProvincia,
-                'T_PROVINCIA_CODICE_NUOVO' => $modelDatafile->codice_provincia_nuovo,
-                'T_PROVINCIA_DESC' => trim($modelDatafile->provincia),
-                'T_PROVINCIA_SIGLA' => $modelDatafile->sigla_provincia,
-                'T_REGIONE_ID' => $regione->getKey(),
-                'T_AREA_ID' => $area->getKey(),
+                'codice' => $codiceProvincia,
+                'codice_nuovo' => $modelDatafile->codice_provincia_nuovo,
+                'nome_it' => trim($modelDatafile->provincia),
+                'sigla' => $modelDatafile->sigla_provincia,
+                'regione_id' => $regione->getKey(),
+                'area_id' => $area->getKey(),
             ]
         );
 
-        $values = array();
+        $fields = [
+            'codice_istat',
+            'nome_it',
+            'codice_catastale',
+            'capoluogo',
+        ];
+        $values = Arr::only($modelDatafile->toArray(), $fields);
+        $values = array_map(function ($value) {
+            return $value == 'n.d.' ? null : trim($value);
+        },$values);
 
-        $values['T_COMUNE_DESC'] = trim($modelDatafile->comune);
-        $values['T_COMUNE_ISTAT'] = $modelDatafile->codice_comune;
-        $values['T_COMUNE_CATASTALE'] = $modelDatafile->codice_catastale_comune;
-        $values['T_COMUNE_CAPOLPRO'] = $modelDatafile->capoluogo_comune;
-        $values['T_PROVINCIA_ID'] = $provincia->getKey();
+        $values['provincia_id'] = $provincia->getKey();
+        $values['regione_id'] = $regione->getKey();
+        $values['area_id'] = $area->getKey();
+        $values['sigla_provincia'] = $provincia->sigla;
+        $values['nazione_id'] = $this->nazioneItaliaId;
+        $values['attivo'] = 1;
 
         return $values;
     }
@@ -170,151 +172,14 @@ class CupGeoComuniIstatXls extends BreezeDatafileProvider
         return $row;
     }
 
-}
-
-// End Datafile Core Model
-
-
-/*
- *
-
-/*
- * DA IMPORT MOVIMENTI
- *
- *
-    protected $doubleDatafileErrorNames = ['Uniquedatafile','DmQuotaDoppia'];
-    protected $importazioneFile = null;
-    protected $importazioneFileData = array();
-
-    protected $anagraficaId = null;
-
-    protected $lastSaveModel = null;
-    protected $lastParticella = null;
-    protected $colturaProgressivo = 1;
-
-    protected $excludeFromFormat = [
-        'id',
-        'row',
-        'datafile_id',
-        'codice_fiscale',
-        'partita_iva',
-        'quota',
-        'causale',
-        'aliquota',
-        'imposta',
-        'importo',
-        'imposta_ok',
-        'importo_ok',
-        'codice_forpag',
-    ];
-
-
-    public $associativeHeaders = [
-        'ORGANIZZAZIONE' => 'organizzazione_id',
-        'CODICE FISCALE' => 'codice_fiscale',
-        'PARTITA IVA' => 'partita_iva',
-        'ANNO' => 'anno',
-        'QUOTA' => 'quota',
-        'CAUSALE' => 'causale',
-        'DATA REG' => 'data',
-        'IMPONIBILE' => 'imponibile',
-        'ALIQUOTA' => 'aliquota',
-        'IMPOSTA' => 'imposta',
-        'IMPORTO' => 'importo',
-        'DARE/AVERE' => 'dare_avere',
-        'DESCRIZIONE' => 'descrizione',
-        'FORPAG' => 'codice_forpag',
-    ];
-
-    public $headerKey = null;
-
-//    public function associateRow(ArdentDatafile $modelDatafile) {
-//        $codice = $modelDatafile->GTComIstat;
-//        $modelTargetName = $this->modelTargetName;
-//        return $modelTargetName::findOrNew($codice);
-//
-//    }
-//
 
     public function beforeLoad()
     {
-        $user = Auth::user();
-        $role = $user->getRoleId();
-
-
-        switch ($role) {
-            case 'ADMIN':
-            case 'SUPERUSER':
-                $this->sedi = true;
-                break;
-            case 'OPERATORE':
-                $abilitazioni = $user->getAbilitazioni();
-                $abilitazioniGesoc = array_get($abilitazioni,'gesoc',[]);
-                $this->sedi = array_keys(array_get($abilitazioniGesoc,'sedi',[]));
-                break;
-            default:
-                $this->sedi = false;
+        $italia = CupGeoNazione::where('nome_it','Italia')->first();
+        if ($italia) {
+            $this->nazioneItaliaId = $italia->getKey();
         }
     }
+}
 
-
-    public function formatDatafileRow($row)
-    {
-
-
-        $newRow = [];
-        foreach ($this->associativeHeaders as $headerFile => $dbField) {
-            $newRow[$dbField] = array_get($row, $headerFile, null);
-        }
-
-
-        $row = $newRow;
-
-        $row['data'] = date('Y-m-d', \PHPExcel_Shared_Date::ExcelToPHP($row['data']));
-
-        $row = $this->getAzienda($row);
-//        Log::info('formatDatafileRowImportMovimenti');
-//        Log::info(var_dump($row));
-        $row = $this->getQuotaCausale($row);
-
-        $row = $this->getIvaImporto($row);
-        $row = $this->getFormapagamento($row);
-
-
-        $row['imponibile'] = number_format(floatval(array_get($row, 'imponibile', 0.00)),2,'.','');
-        $row['imposta'] = number_format(floatval(array_get($row, 'imposta', 0.00)),2,'.','');
-        $row['importo'] = number_format(floatval(array_get($row, 'importo', 0.00)),2,'.','');
-
-        return $row;
-    }
-
-    protected function doubleErrorModelsDmQuotaDoppia($errorObject) {
-        $modelDatafileName = $this->modelDatafileName;
-
-        $modelOrig = $modelDatafileName::find($errorObject->datafile_table_id);
-        if (!$modelOrig) {
-            return [];
-        }
-
-        $models = $modelDatafileName::where('quota',$errorObject->value)
-            ->where('datafile_id',$errorObject->datafile_id)
-            ->where('anno',$modelOrig->anno)
-            ->where('azienda_id',$modelOrig->azienda_id)
-            ->where('organizzazione_id',$modelOrig->organizzazione_id)
-            ->get();
-        $modelRows = $models->lists('row')->all();
-        $datafileErrorName = $this->datafileModelErrorName;
-        $datafileErrorName::where('datafile_id','=',$this->getDatafileId())
-            ->where('error_name','=','DmQuotaDoppia')
-            ->where('field_name','=','quota')
-            ->where('value','=',$errorObject->value)
-            ->whereIn('row',$modelRows)
-            ->delete();
-
-
-        return $models;
-    }
-
-
-
- */
+// End Datafile Core Model

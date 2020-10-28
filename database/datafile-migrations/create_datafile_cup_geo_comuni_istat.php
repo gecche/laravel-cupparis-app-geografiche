@@ -18,18 +18,34 @@ class CreateDatafileCupGeoComuniIstat extends Migration {
 			$table->integer('row')->unsigned()->nullable();
 			$table->integer('datafile_id')->unsigned()->nullable();
 
+            $table->string('codice_regione')->nullable();
+            $table->string('codice_provincia_nuovo')->nullable();
+            $table->string('codice_provincia')->nullable();
+            $table->string('progressivo_comune')->nullable();
+            $table->string('codice_istat')->nullable();
+            $table->string('nome_all')->nullable();
+            $table->string('nome_it')->nullable();
+            $table->string('nome_altra_lingua')->nullable();
+
             $table->string('codice_area')->nullable();
             $table->string('area')->nullable();
-            $table->string('codice_regione')->nullable();
             $table->string('regione')->nullable();
-            $table->string('codice_provincia')->nullable();
             $table->string('provincia')->nullable();
-            $table->string('codice_provincia_nuovo')->nullable();
+
+            $table->string('tipo_provincia')->nullable();
+            $table->string('capoluogo')->nullable();
             $table->string('sigla_provincia')->nullable();
-            $table->string('codice_comune')->nullable();
-            $table->string('capoluogo_comune')->nullable();
-            $table->string('codice_catastale_comune')->nullable();
-            $table->string('comune')->nullable();
+
+            $table->string('codice_istat_numerico')->nullable();
+            $table->string('codice_istat_numerico_110')->nullable();
+            $table->string('codice_istat_numerico_107')->nullable();
+            $table->string('codice_istat_numerico_103')->nullable();
+
+            $table->string('codice_catastale')->nullable();
+            $table->string('codice_nuts_1')->nullable();
+            $table->string('codice_nuts_2')->nullable();
+            $table->string('codice_nuts_3')->nullable();
+
 		});
 	}
 

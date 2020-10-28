@@ -18,7 +18,7 @@ class CreateCupGeoProvinceTable extends Migration {
 		{
             			$table->increments('id');
 			$table->string('sigla',2)->nullable();
-			$table->string('descrizione');
+			$table->string('nome_it');
 			$table->string('codice',3)->unique();
 			$table->string('codice_nuovo',3)->unique();
 			$table->integer('area_id')->unsigned()->index();

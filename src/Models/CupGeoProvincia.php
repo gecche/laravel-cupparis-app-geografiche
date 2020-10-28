@@ -47,17 +47,17 @@ class CupGeoProvincia extends Breeze
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 
-    public $columnsForSelectList = ['descrizione'];
-    //['id','descrizione'];
+    public $columnsForSelectList = ['nome_it'];
+    //['id','nome_it'];
 
-    public $defaultOrderColumns = ['descrizione' => 'ASC',];
+    public $defaultOrderColumns = ['nome_it' => 'ASC',];
     //['cognome' => 'ASC','nome' => 'ASC'];
 
-    public $columnsSearchAutoComplete = ['descrizione'];
+    public $columnsSearchAutoComplete = ['nome_it'];
     //['cognome','denominazione','codicefiscale','partitaiva'];
 
     public $nItemsAutoComplete = 20;
-    public $nItemsForSelectList = 100;
+    public $nItemsForSelectList = 200;
     public $itemNoneForSelectList = false;
     public $fieldsSeparator = ' - ';
 
@@ -81,7 +81,8 @@ class CupGeoProvincia extends Breeze
             DB::table('cup_geo_comuni')
                 ->where('provincia_id', $this->getKey())
                 ->update(['regione_id' => $newRegioneId,
-                    'area_id' => $this->area_id]);
+                    'area_id' => $this->area_id,
+                    'sigla_provincia' => $this->sigla]);
         }
 
         return $saved;

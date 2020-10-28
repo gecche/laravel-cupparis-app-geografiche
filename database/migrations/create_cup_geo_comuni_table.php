@@ -17,12 +17,13 @@ class CreateCupGeoComuniTable extends Migration {
 		Schema::create('cup_geo_comuni', function(Blueprint $table)
 		{
             			$table->increments('id');
-			$table->string('descrizione');
+			$table->string('nome_it');
 			$table->boolean('capoluogo')->nullable();
 			$table->string('codice_istat',6)->unique();
             $table->string('codice_catastale',6)->unique();
 			$table->integer('provincia_id')->unsigned()->index();
 			$table->foreign('provincia_id')->references('id')->on('cup_geo_province')->onDelete('restrict')->onUpdate('cascade');
+            $table->string('sigla_provincia',2);
             $table->integer('regione_id')->unsigned()->index();
             $table->foreign('regione_id')->references('id')->on('cup_geo_regioni')->onDelete('restrict')->onUpdate('cascade');
             $table->integer('area_id')->unsigned()->index();

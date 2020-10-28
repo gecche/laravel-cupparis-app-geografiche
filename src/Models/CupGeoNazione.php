@@ -38,7 +38,7 @@ class CupGeoNazione extends Breeze {
 //        'cognome' => 'between:1,255',
     );
 
-    public $columnsForSelectList = ['descrizione'];
+    public $columnsForSelectList = ['nome_it'];
 
 
     public $nItemsAutoComplete = 20;
@@ -46,5 +46,5 @@ class CupGeoNazione extends Breeze {
     public $itemNoneForSelectList = false;
     public $fieldsSeparator = ' - ';
 
-    public $columnsSearchAutoComplete = array('descrizione');
+    public $columnsSearchAutoComplete = array('nome_it');
 }

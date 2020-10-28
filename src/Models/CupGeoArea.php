@@ -38,13 +38,13 @@ class CupGeoArea extends Breeze
 //        'username' => 'required|between:4,255|unique:users,username',
     ];
 
-    public $columnsForSelectList = ['descrizione'];
-     //['id','descrizione'];
+    public $columnsForSelectList = ['nome_it'];
+     //['id','nome_it'];
 
-    public $defaultOrderColumns = ['descrizione' => 'ASC', ];
+    public $defaultOrderColumns = ['nome_it' => 'ASC', ];
      //['cognome' => 'ASC','nome' => 'ASC'];
 
-    public $columnsSearchAutoComplete = ['descrizione'];
+    public $columnsSearchAutoComplete = ['nome_it'];
      //['cognome','denominazione','codicefiscale','partitaiva'];
 
     public $nItemsAutoComplete = 20;
