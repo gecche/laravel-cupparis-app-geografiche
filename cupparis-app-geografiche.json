@@ -12,7 +12,7 @@
     },
     "modelconfs": {
         "files": [
-            "CupGeoAreaContinente.js",
+            "CupGeoContinente.js",
             "CupGeoAreaMondiale.js",
             "CupGeoNazione.js",
             "CupGeoArea.js",
@@ -55,6 +55,18 @@
         "CupGeoRegione",
         "CupGeoProvincia",
         "CupGeoComune"
+    ],
+    "datafile-models": [
+        "CupGeoComuniIstat",
+        "CupGeoNazioniIstat"
+    ],
+    "datafile-providers": [
+        "CupGeoComuniIstatXls",
+        "CupGeoNazioniIstatXls"
+    ],
+    "pages" : [
+        "tabgeoitalia.html",
+        "tabgeomondo.html"
     ]
 
 }

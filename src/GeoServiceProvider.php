@@ -45,6 +45,11 @@ class GeoServiceProvider extends ServiceProvider
 //            __DIR__ . '/../app/Http/Kernel.php' => app_path('Http/Kernel.php'),
         ], 'models');
 
+        $this->publishes([
+            __DIR__ . '/../app/DatafileModels' => app_path('DatafileModels'),
+            __DIR__ . '/../app/DatafileProviders' => app_path('DatafileProviders'),
+//            __DIR__ . '/../app/Models/Relations' => app_path('Models/Relations'),
+        ], 'datafile-models');
 
 
         if ($this->app->runningInConsole()) {
