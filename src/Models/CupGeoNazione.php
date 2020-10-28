@@ -15,8 +15,8 @@ class CupGeoNazione extends Breeze {
      *
      * @var array
      */
-    protected $fillable = [
-        'codice', 'nome_it', 'nome_en',
+    protected $guarded = [
+        'id',
     ];
 
 
