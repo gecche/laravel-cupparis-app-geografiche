@@ -46,5 +46,15 @@
             "\\App\\Models\\CupGeoProvincia": "\\App\\Policies\\CupGeoProvinciaPolicy",
             "\\App\\Models\\CupGeoComune": "\\App\\Policies\\CupGeoComunePolicy"
         }
-    }
+    },
+    "models": [
+        "CupGeoContinente",
+        "CupGeoAreaMondiale",
+        "CupGeoNazione",
+        "CupGeoArea",
+        "CupGeoRegione",
+        "CupGeoProvincia",
+        "CupGeoComune"
+    ]
+
 }
