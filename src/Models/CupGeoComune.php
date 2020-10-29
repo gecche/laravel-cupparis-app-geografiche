@@ -6,6 +6,7 @@ use App\Models\CupGeoArea;
 use App\Models\CupGeoProvincia;
 use App\Models\CupGeoRegione;
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Support\Str;
 
 /**
  * Breeze (Eloquent) model for T_COMUNE table.
@@ -77,4 +78,14 @@ class CupGeoComune extends Breeze
         return $saved;
 
     }
+
+    public function getCapAttribute($value) {
+        $value = strtolower($value);
+        if (Str::endsWith($value,'x')) {
+            $preCap = substr($value,0,-2);
+            $value = $preCap . '00 - ('.$value.')';
+        }
+        return $value;
+    }
 }
+

@@ -67,6 +67,17 @@ class GeoServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
         }
+        if ($this->app->runningInConsole()) {
+            // Export the migration
+            if (! class_exists('CreateCupGeoNazioniTable')) {
+                $this->publishes([
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_aggiuntive.php' => database_path('migrations/' . date('Y_m_d_His', time()+100) . 'create_datafile_cup_geo_comuni_aggiuntive.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()-101) . 'create_datafile_cup_geo_comuni_istat.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_nazioni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()-102) . 'create_datafile_cup_geo_nazioni_istat.php'),
+                    // you can add any number of migrations here
+                ], 'datafile-migrations');
+            }
+        }
         //Publishing and overwriting databases folders
         $this->publishes([
 //            __DIR__ . '/../database/factories' => database_path('factories'),
