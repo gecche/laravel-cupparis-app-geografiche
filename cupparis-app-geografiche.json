@@ -7,7 +7,10 @@
             "cup_geo_area",
             "cup_geo_regione",
             "cup_geo_provincia",
-            "cup_geo_comune"
+            "cup_geo_comune",
+            "cup_geo_nazioni_istat",
+            "cup_geo_comuni_istat",
+            "cup_geo_comuni_aggiuntive"
         ]
     },
     "modelconfs": {
@@ -58,11 +61,13 @@
     ],
     "datafile-models": [
         "CupGeoComuniIstat",
-        "CupGeoNazioniIstat"
+        "CupGeoNazioniIstat",
+        "CupGeoComuniAggiuntive"
     ],
     "datafile-providers": [
         "CupGeoComuniIstatXls",
-        "CupGeoNazioniIstatXls"
+        "CupGeoNazioniIstatXls",
+        "CupGeoComuniAggiuntive",
     ],
     "pages" : [
         "tabgeoitalia.html",

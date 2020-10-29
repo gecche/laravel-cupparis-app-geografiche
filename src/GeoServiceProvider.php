@@ -26,6 +26,10 @@ class GeoServiceProvider extends ServiceProvider
 //            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
             __DIR__ . '/../config/foorms' => config_path('foorms'),
         ], 'config-foorms');
+        $this->publishes([
+//            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
+            __DIR__ . '/../config/datafile-foorms' => config_path('foorms'),
+        ], 'config-datafile-foorms');
 
         $this->publishes([
 //            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
@@ -71,9 +75,9 @@ class GeoServiceProvider extends ServiceProvider
             // Export the migration
             if (! class_exists('CreateCupGeoNazioniTable')) {
                 $this->publishes([
-                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_aggiuntive.php' => database_path('migrations/' . date('Y_m_d_His', time()+100) . 'create_datafile_cup_geo_comuni_aggiuntive.php'),
-                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()-101) . 'create_datafile_cup_geo_comuni_istat.php'),
-                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_nazioni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()-102) . 'create_datafile_cup_geo_nazioni_istat.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_aggiuntive.php' => database_path('migrations/' . date('Y_m_d_His', time()+100) . '_create_datafile_cup_geo_comuni_aggiuntive.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()+101) . '_create_datafile_cup_geo_comuni_istat.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_nazioni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()+102) . '_create_datafile_cup_geo_nazioni_istat.php'),
                     // you can add any number of migrations here
                 ], 'datafile-migrations');
             }

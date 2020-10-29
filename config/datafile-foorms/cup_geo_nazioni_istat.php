@@ -45,35 +45,21 @@
  */
 
 return [
-    'edit' => [
+
+    'search' => [
         'model' => 'cup_geo_nazioni_istat',
         'models_namespace' => "App\\DatafileModels\\",
-        'fields' => [
-            "dizionario_comune" => [
-
-            ],
-            "T_COMUNE_CAPOLPRO" => [
-
-            ],
-            "T_COMUNE_ISTAT" => [
-
-            ],
-            "T_PROVINCIA_ID" => [
-
-            ]
-        ],
-
     ],
     'list' => [
         'model' => 'cup_geo_nazioni_istat',
         'models_namespace' => "App\\DatafileModels\\",
+
         'pagination' => [
-            //'per_page' => 20,
-            'pagination_steps' => [10, 20, 50],
+            'per_page' => 20,
+            'pagination_steps' => [10,25,50,300],
         ],
 
         'fields' => [
-            "row" => [],
 
             'stato_territorio' => [],
             'codice_continente' => [],
@@ -91,8 +77,254 @@ return [
             'codice_istat_padre' => [],
             'codice_iso_3_padre' => [],
 
+        ],
+        'relations' => [
+            'errors' => [
+                'fields' => [
+                    'id' => [
 
-        ]
-    ]
+                    ],
+                    'field_name' => [
+                    ],
+                    'error_name' => [
+                    ],
+                    'row' => [
+                    ],
+                    'type' => [
+                    ],
+                    'value' => [
+                    ],
+                    'param' => [
+                    ],
+                ],
+
+            ],
+        ],
+        'params' => [
+
+        ],
+    ],
+    'edit' => [
+        'model' => 'cup_geo_nazioni_istat',
+        'models_namespace' => "App\\DatafileModels\\",
+        "actions" => [
+            'uploadfile' => [
+                'allowed_fields' => [
+                    'resource',
+                ],
+                'fields' => [
+                    'resource' => [
+                        'resource_type' => 'attachment',
+                    ],
+                ],
+            ],
+        ],
+        'fields' => [
+            'id' => [
+
+            ],
+            'resource' => [
+                'resource_type' => 'attachment',
+            ]
+
+//            'username' => [
+//                //'default' => 'user'
+//            ],
+//            'cliente_id' => [
+//                'nullable' => true,
+//                'options' => 'relation:cliente',
+//            ],
+//            'attivo' => [
+//                'options' => 'boolean',
+//            ],
+        ],
+//        'relations' => [
+//            'tickets' => [
+//                'fields' => [
+//                    'id' => [
+//
+//                    ],
+//                    'codice' => [
+//                        'nullable' => true,
+//                        'options' => 'relation:cliente',
+//                        //'default' => 'pippo',
+//                    ],
+//                    'descrizione' => [
+//
+//                    ],
+//                ],
+//
+//            ],
+//        ],
+        'params' => [
+
+        ],
+    ],
+//    'insert' => [
+//
+//    ],
 
 ];
+
+
+/*
+ * var Model_UnicoComune = {
+    search: SearchConfs.extend({
+        fields: [
+            'codice',
+            'descrizione',
+            'codice_catastale',
+            'provincia_id',
+            'regione_id',
+            'nazione_id',
+            'estero',
+        ],
+        operator: {
+            'codice': 'like',
+            'descrizione': 'like',
+            'codice_catastale': 'like',
+            'cap': 'like',
+            'prefisso_telefonico': 'like',
+            'provincia_id': '=',
+            'regione_id': '=',
+            'nazione_id': '=',
+            'estero': '=',
+        },
+        groups: {
+            'g0': {
+                fields: ['codice', 'descrizione', 'codice_catastale', 'cap', 'prefisso_telefonico'],
+            },
+            'g1': {
+                fields: ['provincia_id', 'regione_id', 'nazione_id', 'estero'],
+            }
+        },
+        fields_type: {
+            'provincia_id': {
+                type: 'select'
+            },
+            'regione_id': {
+                type: 'select'
+            },
+            'nazione_id': {
+                type: 'select'
+            },
+            'estero': {
+                type: 'select'
+            },
+        }
+    }),
+    list: ListConfs.extend({
+        actions : [
+            'actionDelete',
+            'actionEdit',
+            'actionInsert',
+            'pdf_download_list',
+            'csv_download',
+        ],
+        extra_actions: {
+            pdf_download_list: new actionPdfDownloadQueueCollection({
+                action: 'pdf_download_list',
+                actionText : 'Pdf',
+                actionIcon: 'fa fa-file-pdf-o',
+                pdfType: 'list',
+            }),
+            csv_download: new actionCsvDownloadQueueCollection({
+                action: 'csv_download',
+                //csvType : 'ciccio'
+            }),
+        },
+        fields: [
+            'codice',
+            'descrizione',
+            'codice_catastale',
+            'provincia',
+            'cap',
+            'prefisso_telefonico',
+            'regione',
+            'nazione',
+            'estero',
+        ],
+        fields_type: {
+            'provincia': {
+                'type': "belongsto",
+                'fields': ['sigla', 'descrizione'],
+            },
+            'regione': {
+                'type': "belongsto",
+                'fields': ['descrizione'],
+            },
+            'nazione': {
+                'type': "belongsto",
+                'fields': ['descrizione'],
+            },
+            'estero': {
+                type: 'swap',
+                mode: 'edit'
+            },
+            'descrizione': {
+                type: 'text',
+            }
+            // 'codice' : {
+            //     type : 'select'
+            // }
+
+        },
+        init: function () {
+
+            // this.fields_type.estero = {
+            //     type: 'swap',
+            //     mode : 'edit'
+            // }
+
+        }
+    }),
+    edit: EditConfs.extend({
+        fields: [
+            'codice',
+            'descrizione',
+            'codice_catastale',
+            'cap',
+            'prefisso_telefonico',
+            'provincia_id',
+            'regione_id',
+            'nazione_id',
+            'estero',
+        ],
+        fields_type: {
+            'descrizione': {
+                type: 'input',
+                inputType: 'text',
+            },
+            'provincia_id': {
+                type: 'select'
+            },
+            'regione_id': {
+                type: 'select'
+            },
+            'nazione_id': {
+                type: 'select'
+            },
+            'estero': {
+                type: 'select'
+            },
+        },
+        init: function () {
+
+
+            // this.fields_type.cliente_id = {
+            //     'type': 'select',
+            // };
+            // this.fields_type.role = {
+            //     //type : 'select',
+            //
+            //     type : 'choice',
+            //     choiceType : 'radio',
+            //
+            // }
+
+        }
+    }),
+}
+
+
+ */
