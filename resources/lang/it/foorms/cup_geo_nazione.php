@@ -57,6 +57,6 @@ return [
     'stato di appartenenza' => '',
     'continente_id' => 'continente',
     'area_id' => 'area',
-    'flag' => 'bandiera presente',
+//    'flag' => 'bandiera presente',
     'attivo' => 'attiva',
 ];

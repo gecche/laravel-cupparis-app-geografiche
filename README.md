@@ -10,6 +10,17 @@ Procedura di installazione
 4 - php artisan db:seed --class=CupGeoSeeder
     (popola le tabelle geografiche con la versione dei files in corso)
 
+5 - per le bandiere, un casino... per il momento:
+    da public/admin/assets/css : 
+    ln -s ../../../../vendor/components/flag-icon-css/css/flag-icon.css flag-icon.css
+    da public/admin/assets/ : 
+    ln -s ../../../vendor/components/flag-icon-css/flags flags
+    in head aggiungere
+    {!! Theme::css('assets/css/flag-icon.css') !!}
+    
+    
+
+
 Procedura di disinstallazione
 
 1 - php artisan uninstall-cupparis-package cupparis-app-geografiche --json

@@ -28,7 +28,7 @@ class CreateCupGeoNazioniTable extends Migration {
             $table->foreign('continente_id')->references('id')->on('cup_geo_continenti')->onDelete('restrict')->onUpdate('cascade');
             $table->integer('area_id')->unsigned()->nullable()->default(null);// varchar(50) DEFAULT NULL,
             $table->foreign('area_id')->references('id')->on('cup_geo_aree_mondiali')->onDelete('restrict')->onUpdate('cascade');
-            $table->boolean('flag')->default(0);// varchar(50) DEFAULT NULL,
+//            $table->boolean('flag')->default(0);// varchar(50) DEFAULT NULL,
             $table->boolean('attivo')->default(1);// varchar(50) DEFAULT NULL,
 
 

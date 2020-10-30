@@ -89,10 +89,6 @@ return [
 
             ],
 
-
-            'flag' => [
-
-            ],
             'attivo' => [
 
             ],

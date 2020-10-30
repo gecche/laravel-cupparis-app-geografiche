@@ -143,7 +143,7 @@ class CupGeoNazioniIstatXls extends BreezeDatafileProvider
 
         Log::info(print_r($values,true));
 
-        $values['flag'] = 0;
+//        $values['flag'] = 0;
         $values['attivo'] = 1;
 
         $values['continente_id'] = $continente->getKey();

@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "gecche/laravel-cupparis-app": "v6.x-dev"
+        "gecche/laravel-cupparis-app": "v6.x-dev",
+        "components/flag-icon-css" : "^3.5"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",

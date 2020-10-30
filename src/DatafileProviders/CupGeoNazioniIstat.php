@@ -137,7 +137,7 @@ class CupGeoNazioniIstat extends BreezeDatafileProvider
             'nome_en',
         ];
         $values = Arr::only($modelDatafile->toArray(), $fields);
-        $values['flag'] = 0;
+//        $values['flag'] = 0;
         $values['attivo'] = 1;
 
         $values['continente_id'] = $continente->getKey();

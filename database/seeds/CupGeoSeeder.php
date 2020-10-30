@@ -18,7 +18,7 @@ class CupGeoSeeder extends Seeder
     {
 
 
-        $dumpFile = 'cup_geo_seed_20201029';
+        $dumpFile = 'cup_geo_seed_20201030';
         $path = base_path();
         $mySqlString = env('MYSQL_PATH', 'mysql') . ' --user=' . env('DB_USERNAME', '')
             . ' --password=' . env('DB_PASSWORD', '') . ' ' . env('DB_DATABASE', '')

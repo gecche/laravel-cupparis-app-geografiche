@@ -5,10 +5,14 @@ var ModelCupGeoNazione = {
         fields: [
             'nome_it',
             'codice_istat',
-            'continente_id'
+            'continente_id',
+            'area_id',
         ],
         fieldsConfig : {
             'continente_id' : {
+                type : 'w-select',
+            },
+            'area_id' : {
                 type : 'w-select',
             }
         }
@@ -33,7 +37,8 @@ var ModelCupGeoNazione = {
             'codice_catastale',
             'codice_iso_2',
             'continente',
-            'flag',
+            'area',
+            'flagicon',
             'attivo'
         ],
         fieldsConfig : {
@@ -42,8 +47,28 @@ var ModelCupGeoNazione = {
                 labelFields: [
                     'nome_it',
                 ],
+            },
+            'area' : {
+                type : 'w-belongsto',
+                labelFields: [
+                    'nome_it',
+                ],
+            },
+            flagicon : {
+                type : 'w-custom',
+                mounted : function() {
+                    var that = this;
+                    var iso = (that.modelData.codice_iso_2).toLowerCase();
+                    if (iso === 'uk') iso = 'gb';
+                    that.value = '<span class="flag-icon flag-icon-'+
+                        iso +
+                        '"></span>';
+                }
+            },
+            attivo : {
+                type : 'w-swap-smarty'
             }
-        },
+         },
         actions: [
             'action-edit', 'action-delete', 'action-insert',
             'action-export-csv'
