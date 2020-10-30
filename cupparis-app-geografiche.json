@@ -67,7 +67,7 @@
     "datafile-providers": [
         "CupGeoComuniIstatXls",
         "CupGeoNazioniIstatXls",
-        "CupGeoComuniAggiuntive",
+        "CupGeoComuniAggiuntive"
     ],
     "pages" : [
         "tabgeoitalia.html",
