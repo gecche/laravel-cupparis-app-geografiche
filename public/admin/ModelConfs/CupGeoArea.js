@@ -3,7 +3,7 @@ var CupGeoArea = {
     search: {
         modelName : 'cup_geo_area',
         //langContext : 'user',
-        fields : ['descrizione'],
+        fields : ['nome_it'],
     },
     // view : {
     //     modelName : 'cup_geo_area',
@@ -18,17 +18,17 @@ var CupGeoArea = {
     // },
     list: {
         modelName : 'cup_geo_area',
-        fields : ['codice','descrizione'],
+        fields : ['codice','nome_it'],
         actions : ['action-edit','action-delete','action-insert'],
         orderFields : {
             'codice':'codice',
-            'descrizione':'descrizione'
+            'nome_it':'nome_it'
         },
     },
     edit: {
         modelName : 'cup_geo_area',
         actions : ['action-save','action-back'],
-        fields : ['codice','descrizione',
+        fields : ['codice','nome_it',
             //'comuni'
         ],
     },
