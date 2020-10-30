@@ -16,18 +16,12 @@ class GeoServiceProvider extends ServiceProvider
     public function boot()
     {
 
-//        $this->publishes([
-//            __DIR__ . '/../config/cupparis-geografiche.php' => config_path('cupparis-geografiche.php'),
-//        ], 'public');
-
-
         //Publishing configs
         $this->publishes([
-//            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
+            __DIR__ . '/../config/cupparis-geografiche.php' => config_path('cupparis-geografiche.php'),
             __DIR__ . '/../config/foorms' => config_path('foorms'),
-        ], 'config-foorms');
+        ], 'config');
         $this->publishes([
-//            __DIR__ . '/../config/themes.php' => config_path('themes.php'),
             __DIR__ . '/../config/datafile-foorms' => config_path('foorms'),
         ], 'config-datafile-foorms');
 
@@ -84,8 +78,8 @@ class GeoServiceProvider extends ServiceProvider
         }
         //Publishing and overwriting databases folders
         $this->publishes([
-//            __DIR__ . '/../database/factories' => database_path('factories'),
-//            __DIR__ . '/../database/seeds' => database_path('seeds'),
+            __DIR__ . '/../database/dump' => database_path('dump'),
+            __DIR__ . '/../database/seeds' => database_path('seeds'),
         ], 'db');
 
         //Publishing and overwriting resources folders
@@ -100,14 +94,6 @@ class GeoServiceProvider extends ServiceProvider
             __DIR__ . '/../public/admin/ModelConfs' => public_path('admin/ModelConfs'),
             __DIR__ . '/../public/admin/pages' => public_path('admin/pages'),
         ], 'public');
-//        $this->publishes([
-//            __DIR__ . '/../public/bootstrap4/components' => public_path('bootstrap4/components'),
-//            //__DIR__ . '/../public/images' => public_path('images'),
-//            //__DIR__ . '/../public/js/edit_area' => public_path('js/edit_area'),
-//            //__DIR__ . '/../public/crud-vue/components' => public_path('crud-vue/components'),
-//            //__DIR__ . '/../public/crud-vue/ModelConfs' => public_path('crud-vue/ModelConfs'),
-//            //__DIR__ . '/../public/crud-vue/plugins' => public_path('crud-vue/plugins'),
-//        ], 'public-js');
 
 
 
