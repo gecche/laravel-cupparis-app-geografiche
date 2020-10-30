@@ -17,5 +17,10 @@ trait CupGeoNazioneRelations
     
     }
 
+    public function parent() {
+
+        return $this->belongsTo(\App\Models\CupGeoNazione::class, 'parent_id', null, null);
+
+    }
 
 }

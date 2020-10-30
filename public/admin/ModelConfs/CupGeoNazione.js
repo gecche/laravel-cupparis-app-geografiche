@@ -31,6 +31,7 @@ var ModelCupGeoNazione = {
     list: {
         modelName: 'cup_geo_nazione',
         fields: [
+            // 'id',
             'codice_istat',
             'nome_it',
             'nome_en',
@@ -66,9 +67,10 @@ var ModelCupGeoNazione = {
                 }
             },
             attivo : {
-                type : 'w-swap-smarty'
+                type : 'w-swap-smarty',
+                modelName : 'cup_geo_nazione'
             }
-         },
+        },
         actions: [
             'action-edit', 'action-delete', 'action-insert',
             'action-export-csv'
@@ -86,8 +88,29 @@ var ModelCupGeoNazione = {
     edit: {
         modelName: 'cup_geo_nazione',
         actions: ['action-save', 'action-back'],
-        fields: ['codice', 'nome_it',
-            //'comuni'
+        fields: [
+            'codice_istat',
+            'nome_it',
+            'nome_en',
+            'continente_id',
+            'area_id',
+            'codice_catastale',
+            'codice_iso_2',
+            'codice_iso_3',
+            'parent_id',
+            'attivo'
         ],
+        fieldsConfig : {
+            parent_id : {
+                type : 'w-select',
+            },
+            area_id : {
+                type : 'w-select',
+            },
+            continente_id : {
+                type : 'w-select',
+            }
+
+        }
     },
 }

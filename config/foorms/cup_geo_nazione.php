@@ -57,10 +57,41 @@ return [
             'continente_id' => [
                 'options' => 'relation:continente',
             ],
+            'area_id' => [
+                'options' => 'relation:area',
+            ],
         ],
     ],
     'list' => [
 
+        'actions' => [
+            'set' => [
+                'allowed_fields' => [
+                    'attivo',
+                ],
+            ],
+            'csv-export' => [
+                'default' => [
+                    'whitelist' => [
+                        'codice_istat',
+                        'nome_it',
+                        'nome_en',
+                        'codice_catastale',
+                        'codice_iso_2',
+                        'codice_iso_3',
+                        'area|nome_it',
+                        'continente|nome_it',
+                        'attivo',
+                    ],
+//                    'whitelist' => null,
+                    'separator' => ';',
+                    'endline' => "\n",
+                    'headers' => 'translate',
+                    'decimalFrom' => '.',
+                    'decimalTo' => false,
+                ],
+            ],
+        ],
         'dependencies' => [
             'search' => 'search',
         ],
@@ -100,6 +131,11 @@ return [
                     'nome_it' => [],
                 ]
             ],
+            'area' => [
+                'fields' => [
+                    'nome_it' => [],
+                ]
+            ],
         ],
         'params' => [
 
@@ -110,15 +146,22 @@ return [
             'id' => [
 
             ],
-            'codice' => [
-
+            'codice_istat' => [],
+            'codice_catastale' => [],
+            'codice_iso_2' => [],
+            'codice_iso_3' => [],
+            'nome_it' => [],
+            'nome_en' => [],
+            'parent_id' => [
+                'options' => 'relation:parent',
             ],
-            'nome_it' => [
-
+            'continente_id' => [
+                'options' => 'relation:continente',
             ],
-            'nome_en' => [
-
+            'area_id' => [
+                'options' => 'relation:area',
             ],
+            'attivo' => [],
 //            'cliente_id' => [
 //                'nullable' => true,
 //                'options' => 'relation:cliente',
