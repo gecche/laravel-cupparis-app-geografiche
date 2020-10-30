@@ -48,18 +48,21 @@ return [
 
     'search' => [
         'fields' => [
-            'codice' => [
+            'codice_istat' => [
                 'operator' => 'like',
             ],
             'nome_it' => [
                 'operator' => 'like',
+            ],
+            'continente_id' => [
+                'options' => 'relation:continente',
             ],
         ],
     ],
     'list' => [
 
         'dependencies' => [
-          'search' => 'search',
+            'search' => 'search',
         ],
         'pagination' => [
             'per_page' => 20,
@@ -68,9 +71,9 @@ return [
 
         'fields' => [
             'id' => [
-                'default' => 1,
+
             ],
-            'codice' => [
+            'codice_istat' => [
 
             ],
             'nome_it' => [
@@ -79,12 +82,29 @@ return [
             'nome_en' => [
 
             ],
+            'codice_catastale' => [
+
+            ],
+            'codice_iso_2' => [
+
+            ],
+
+
+            'flag' => [
+
+            ],
+            'attivo' => [
+
+            ],
+
         ],
-//        'relations' => [
-//            'cliente' => [
-//
-//            ],
-//        ],
+        'relations' => [
+            'continente' => [
+                'fields' => [
+                    'nome_it' => [],
+                ]
+            ],
+        ],
         'params' => [
 
         ],

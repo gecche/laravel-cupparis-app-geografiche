@@ -9,26 +9,53 @@ return [
 
     'search' => [
         "fields" => [
-            "nome_it" => []
-        ]
+            "nome_it" => [
+                'operator' => 'like',
+            ]
+        ],
+
     ],
     'list' => [
 
-        'allowed_actions' => [
-
-        ],
-
-        'actions' => [
-//            'set' => [
-//                'allowed_fields' => [
-//                    'banned',
-//                    'email_verified_at',
+////        'allowed_actions' => [
+////            'csv-export' => true,
+////        ],
+//
+//        'actions' => [
+//            'csv-export' => [
+//                'default' => [
+//                    'blacklist' => [
+////                        'password'
+//                    ],
+//                    'whitelist' => [
+//                        "codice",
+//                        "nome_it",
+//
 //                ],
+//                    'fieldsParams' => [
+////                        "istituto|comunenome" => [
+////                            'header' => 'Istituto - comune (nome)',
+////                            'item' => 'istituto|T_COMUNE_ID',
+////                        ],
+//                    ],
+//                    'separator' => ';',
+//                    'endline' => "\n",
+//                    'headers' => 'translate',
+//                    'decimalFrom' => '.',
+//                    'decimalTo' => false,
+//                ],
+//            ]
+//
+////            'set' => [
+////                'allowed_fields' => [
+////                    'banned',
+////                    'email_verified_at',
+////                ],
+////            ],
 //            ],
-        ],
 
         'dependencies' => [
-//            'search' => 'search',
+            'search' => 'search',
         ],
 
         'pagination' => [

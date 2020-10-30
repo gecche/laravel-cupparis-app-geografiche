@@ -21,6 +21,8 @@ class CupGeoNazione extends Breeze {
 
 
     public static $relationsData = [
+        'continente' => [self::BELONGS_TO, 'related' => \App\Models\CupGeoContinente::class, 'foreignKey' => 'continente_id'],
+        'area' => [self::BELONGS_TO, 'related' => \App\Models\CupGeoAreaMondiale::class, 'foreignKey' => 'area_id'],
 //        'cliente' => [self::BELONGS_TO, 'related' => 'App\Models\Cliente'],
 //        'tickets' => [self::HAS_MANY, 'related' => 'App\Models\Ticket'],
     ];

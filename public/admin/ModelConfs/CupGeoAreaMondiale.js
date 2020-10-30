@@ -18,11 +18,19 @@ var ModelCupGeoAreaMondiale = {
     list: {
         modelName : 'cup_geo_area_mondiale',
         fields : ['codice','nome_it'],
-        actions : ['action-edit','action-delete','action-insert'],
+        actions : [
+            'action-edit','action-delete','action-insert',
+            'action-export-csv'
+        ],
         orderFields : {
             'codice':'codice',
             'nome_it':'nome_it'
         },
+        customActions : {
+            'action-export-csv' : {
+                text: 'Csv',
+            }
+        }
     },
     edit: {
         modelName : 'cup_geo_area_mondiale',
