@@ -18,7 +18,7 @@ class GeoServiceProvider extends ServiceProvider
 
         //Publishing configs
         $this->publishes([
-            __DIR__ . '/../config/cupparis-geografiche.php' => config_path('cupparis-geografiche.php'),
+            __DIR__ . '/../config/cupparis-app-geografiche.php' => config_path('cupparis-app-geografiche.php'),
             __DIR__ . '/../config/foorms' => config_path('foorms'),
         ], 'config');
         $this->publishes([
