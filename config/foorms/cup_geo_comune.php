@@ -53,7 +53,7 @@ return [
             'provincia_id' => [
                 'options' => 'relation:provincia',
             ],
-            'descrizione' => [
+            'nome_it' => [
                 'operator' => 'like',
             ]
         ]
@@ -61,6 +61,40 @@ return [
     ],
     'list' => [
 
+        'actions' => [
+            'set' => [
+                'allowed_fields' => [
+                    'attivo',
+                    'capoluogo',
+                ],
+            ],
+            'csv-export' => [
+                'default' => [
+                    'whitelist' => [
+                        'codice_istat',
+                        'nome_it',
+                        'codice_catastale',
+                        'capoluogo',
+                        'provincia|nome_it',
+                        'provincia|sigla',
+                        'regione|nome_it',
+                        'area|nome_it',
+                        'nazione|nome_it',
+                        'cap',
+                        'prefisso',
+                        'lat',
+                        'lng',
+                        'attivo',
+                    ],
+//                    'whitelist' => null,
+                    'separator' => ';',
+                    'endline' => "\n",
+                    'headers' => 'translate',
+                    'decimalFrom' => '.',
+                    'decimalTo' => false,
+                ],
+            ],
+        ],
         'dependencies' => [
             'search' => 'search',
         ],
@@ -72,21 +106,37 @@ return [
 
         'fields' => [
             'id' => [],
-            'codice' => [],
-            'descrizione' => [],
+            'codice_istat' => [],
+            'nome_it' => [],
             'codice_catastale' => [],
-            'provincia' => [],
+            'capoluogo' => [],
+
             'cap' => [],
-            'prefisso_telefonico' => [],
-            'regione_id' => [],
-            'nazione_id' => [],
-            'estero' => [],
+            'prefisso' => [],
+            'attivo' => [],
+//            'estero' => [],
 
         ],
         'relations' => [
             'provincia' => [
                 'fields' => [
-                    'codice' => []
+                    'nome_it' => [],
+                    'sigla' => []
+                ]
+            ],
+            'regione' => [
+                'fields' => [
+                    'nome_it' => [],
+                ]
+            ],
+            'area' => [
+                'fields' => [
+                    'nome_it' => [],
+                ]
+            ],
+            'nazione' => [
+                'fields' => [
+                    'nome_it' => [],
                 ]
             ],
         ],
@@ -96,38 +146,46 @@ return [
     ],
     'edit' => [
         'actions' => [
-            'autocomplete' => [
-                'fields' => [
-                    'codice' => [
-                        'model' => 'comune'
-                    ]
-                ]
-            ]
+//            'autocomplete' => [
+//                'fields' => [
+//                    'codice' => [
+//                        'model' => 'comune'
+//                    ]
+//                ]
+//            ]
         ],
         'fields' => [
             //'id' => [],
-            'codice' => [],
-            'descrizione' => [],
+            'codice_istat' => [],
+            'nome_it' => [],
             'codice_catastale' => [],
-            'provincia' => [],
+            'capoluogo' => [
+                'options' => 'boolean',
+            ],
+            'provincia_id' => [
+                'options' => 'relation:provincia',
+            ],
+            'nazione_id' => [
+                'options' => 'relation:nazione',
+            ],
             'cap' => [],
-            'prefisso_telefonico' => [],
-            'regione_id' => [],
-            'nazione_id' => [],
-            'estero' => [],
+            'prefisso' => [],
+            'lat' => [],
+            'lng' => [],
+            'attivo' => [],
 
         ],
         'relations' => [
-            'provincia' => [
-                'fields' => [
-                    'codice' => []
-                ]
-            ],
-            'regione' => [
-                'fields' => [
-                    'codice' => []
-                ]
-            ],
+//            'provincia' => [
+//                'fields' => [
+//                    'codice' => []
+//                ]
+//            ],
+//            'regione' => [
+//                'fields' => [
+//                    'codice' => []
+//                ]
+//            ],
         ],
 //        'relations' => [
 //            'tickets' => [
@@ -140,7 +198,7 @@ return [
 //                        'options' => 'relation:cliente',
 //                        //'default' => 'pippo',
 //                    ],
-//                    'descrizione' => [
+//                    'nome_it' => [
 //
 //                    ],
 //                ],
@@ -157,15 +215,14 @@ return [
     'view' => [
         'fields' => [
             //'id' => [],
-            'codice' => [],
-            'descrizione' => [],
+            'codice_istat' => [],
+            'nome_it' => [],
             'codice_catastale' => [],
             'provincia' => [],
             'cap' => [],
-            'prefisso_telefonico' => [],
+            'prefisso' => [],
             'regione_id' => [],
             'nazione_id' => [],
-            'estero' => [],
 
         ],
     ]
@@ -178,7 +235,7 @@ return [
     search: SearchConfs.extend({
         fields: [
             'codice',
-            'descrizione',
+            'nome_it',
             'codice_catastale',
             'provincia_id',
             'regione_id',
@@ -187,7 +244,7 @@ return [
         ],
         operator: {
             'codice': 'like',
-            'descrizione': 'like',
+            'nome_it': 'like',
             'codice_catastale': 'like',
             'cap': 'like',
             'prefisso_telefonico': 'like',
@@ -198,7 +255,7 @@ return [
         },
         groups: {
             'g0': {
-                fields: ['codice', 'descrizione', 'codice_catastale', 'cap', 'prefisso_telefonico'],
+                fields: ['codice', 'nome_it', 'codice_catastale', 'cap', 'prefisso_telefonico'],
             },
             'g1': {
                 fields: ['provincia_id', 'regione_id', 'nazione_id', 'estero'],
@@ -241,7 +298,7 @@ return [
         },
         fields: [
             'codice',
-            'descrizione',
+            'nome_it',
             'codice_catastale',
             'provincia',
             'cap',
@@ -253,21 +310,21 @@ return [
         fields_type: {
             'provincia': {
                 'type': "belongsto",
-                'fields': ['sigla', 'descrizione'],
+                'fields': ['sigla', 'nome_it'],
             },
             'regione': {
                 'type': "belongsto",
-                'fields': ['descrizione'],
+                'fields': ['nome_it'],
             },
             'nazione': {
                 'type': "belongsto",
-                'fields': ['descrizione'],
+                'fields': ['nome_it'],
             },
             'estero': {
                 type: 'swap',
                 mode: 'edit'
             },
-            'descrizione': {
+            'nome_it': {
                 type: 'text',
             }
             // 'codice' : {
@@ -287,7 +344,7 @@ return [
     edit: EditConfs.extend({
         fields: [
             'codice',
-            'descrizione',
+            'nome_it',
             'codice_catastale',
             'cap',
             'prefisso_telefonico',
@@ -297,7 +354,7 @@ return [
             'estero',
         ],
         fields_type: {
-            'descrizione': {
+            'nome_it': {
                 type: 'input',
                 inputType: 'text',
             },

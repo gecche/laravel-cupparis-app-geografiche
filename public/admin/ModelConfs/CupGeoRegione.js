@@ -1,109 +1,72 @@
-var CupGeoRegione = {
-    search : {
-        buttonsClass : 'bg-gradient-info overlay-dark overlay-opacity-4',
-        fields: [
-            'area_id',
-            'descrizione',
+
+var ModelCupGeoRegione = {
+    search: {
+        modelName : 'cup_geo_regione',
+        //langContext : 'user',
+        fields : [
+            'nome_it', 'area_id'
         ],
-        fieldsConfig : {
-            'area_id': {
-                type: "w-select",
-            },
+        fieldsConfig: {
+            'area_id' : {
+                type : 'w-select'
+            }
         }
     },
+    // view : {
+    //     modelName : 'cup_geo_regione',
+    //     //fields : ['name','email','password','password_confirmation','banned','mainrole','fotos','attachments'],
+    //     actions : [],
+    //     fieldsConfig : {
+    //         mainrole : {
+    //             type : 'w-belongsto',
+    //             fields : ['name']
+    //         }
+    //     }
+    // },
     list: {
-        modelName : 'regione',
-        fields: [
-            'id',
-            'codice',
-            'descrizione',
-            'area'
+        modelName : 'cup_geo_regione',
+        fields : [
+            'codice','nome_it',
+            'area',
+            'attivo'
 
         ],
-        actions : [
-            'action-insert',
-            'action-edit',
-            'action-delete',
-            'action-delete-selected',
+        actions : ['action-edit','action-delete','action-insert',
+            'action-export-csv'
         ],
         orderFields : {
             'codice':'codice',
-            'descrizione':'descrizione'
+            'nome_it':'nome_it'
         },
-        fieldsConfig: {
-			'descrizione' : {
-			},
-            'codice' : {
+        fieldsConfig : {
+            'attivo' : {
+                type : 'w-swap-smarty',
+                modelName : 'cup_geo_regione'
             },
-            area : {
+            'area' : {
                 type : 'w-belongsto',
-                labelFields : ['descrizione']
-            },
-
+                labelFields : [
+                    'nome_it',
+                ]
+            }
         },
-
-        mounted : function () {
-
-        }
-    },
-    listRidotta: {
-        modelName : 'regione',
-        fields: [
-            'descrizione',
-        ],
-        actions : [
-            'action-insert',
-            'action-edit',
-            'action-delete',
-        ],
-        orderFields : {
-            'codice':'codice',
-            'descrizione':'descrizione'
-        },
-        fieldsConfig: {
-            'descrizione' : {
-                type : 'w-custom',
-                mounted : function () {
-                    var that = this;
-                    that.value = that.modelData['descrizione'] + " - " + that.modelData.area['descrizione']
-                        + " (" + that.modelData['codice'] + ")";
-                }
-            },
-            'codice' : {
-            },
-            area : {
-                type : 'w-belongsto',
-                labelFields : ['descrizione']
-            },
-
-        },
-
-        mounted : function () {
-
+        customActions : {
+            'action-export-csv' : {
+                text: 'Csv',
+            }
         }
     },
     edit: {
-        modelName : 'regione',
+        modelName : 'cup_geo_regione',
         actions : ['action-save','action-back'],
-        fields: [
-            'codice',
-			'descrizione',
-            'area_id',
+        fields : ['codice','nome_it','area_id'
+            //'comuni'
         ],
         fieldsConfig: {
-			'area_id' : {
-                type : "w-select"
-			},
-
+            'area_id' : {
+                type : 'w-select'
+            }
         }
-
     },
+
 }
-
-var manageRegione = {
-    listConf : CupGeoRegione.listRidotta,
-    manageHeaderClass : 'bg-gradient-info overlay-dark overlay-opacity-4',
-    manageHeaderTextClass : 'text-white',
-}
-
-

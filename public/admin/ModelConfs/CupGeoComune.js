@@ -1,9 +1,9 @@
 var ModelCupGeoComune = {
     search : {
         modelName : 'comune',
-        fields : ['descrizione','provincia_id'],
+        fields : ['nome_it','provincia_id'],
         fieldsConfig : {
-            'descrizione' : {
+            'nome_it' : {
 
             },
             'provincia_id' : 'w-select',
@@ -16,38 +16,51 @@ var ModelCupGeoComune = {
             'action-edit',
             'action-delete',
             'action-delete-selected',
+            'action-export-csv',
         ],
+        customActions : {
+            'action-export-csv' : {
+                text: 'Csv',
+            }
+        },
 
         fields: [
             'id',
-			'T_COMUNE_ISTAT',
-			'T_COMUNE_DESC',
-            'T_COMUNE_CATASTALE',
-			'T_COMUNE_CAPOLPRO',
-			'provincia',
+            'codice_istat',
+            'nome_it',
+            'codice_catastale',
+            'capoluogo',
+            'provincia',
             'provinciasigla',
+            'cap',
+            'prefisso',
+            'attivo',
 
         ],
         fieldsConfig: {
-			'T_COMUNE_CAPOLPRO' : {
+            'capoluogo' : {
                 type : 'w-swap-smarty',
                 modelName : 'comune',
-			},
-			'provincia' : {
+            },
+            'attivo' : {
+                type : 'w-swap-smarty',
+                modelName : 'comune',
+            },
+            'provincia' : {
                 type : "w-belongsto",
                 labelFields : [
-                    'T_PROVINCIA_DESC',
+                    'nome_it',
                 ],
-			},
+            },
             'provinciasigla' : {
                 type : "w-custom",
                 mounted : function() {
                     var that = this;
                     if (that.modelData)
-                        that.value = that.modelData.provincia.T_PROVINCIA_SIGLA;
+                        that.value = that.modelData.provincia.sigla;
                     // setTimeout(function () {
                     //     console.log('modelData',that.modelData);
-                    //     that.value = that.modelData.provincia.T_PROVINCIA_SIGLA;
+                    //     that.value = that.modelData.provincia.sigla;
                     // },400)
 
                 }
@@ -55,30 +68,38 @@ var ModelCupGeoComune = {
 
         },
         orderFields : {
-			'T_COMUNE_DESC' : 'T_COMUNE_DESC',
-			'T_COMUNE_ISTAT' : 'T_COMUNE_ISTAT',
-            'T_COMUNE_CATASTALE' : 'T_COMUNE_CATASTALE',
+            'nome_it' : 'nome_it',
+            'codice_istat' : 'codice_istat',
+            'codice_catastale' : 'codice_catastale',
         }
 
     },
     edit: {
         fields: [
-			'T_COMUNE_DESC',
-			'T_COMUNE_CAPOLPRO',
-			'T_COMUNE_ISTAT',
-            'T_COMUNE_CATASTALE',
-			'T_PROVINCIA_ID',
+            'nome_it',
+            'codice_istat',
+            'codice_catastale',
+            'provincia_id',
+            'capoluogo',
+            'nazione_id',
+            'cap',
+            'prefisso',
 
         ],
         fieldsConfig: {
 
-			'T_COMUNE_CAPOLPRO' : {
+            'capoluogo' : {
                 type : "w-radio",
-			},
+            },
 
-			'T_PROVINCIA_ID' : {
+            'provincia_id' : {
                 type : "w-select",
-			},
+            },
+
+            'nazione_id' : {
+                type : "w-select",
+            },
+
 
         }
 

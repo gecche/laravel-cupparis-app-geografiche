@@ -5,6 +5,7 @@ namespace Gecche\Cupparis\App\Geografiche\Models;
 use App\Models\CupGeoArea;
 use App\Models\CupGeoProvincia;
 use App\Models\CupGeoRegione;
+use App\Models\CupGeoNazione;
 use Gecche\Cupparis\App\Breeze\Breeze;
 use Illuminate\Support\Str;
 
@@ -33,6 +34,7 @@ class CupGeoComune extends Breeze
         'provincia' => [self::BELONGS_TO, 'related' => CupGeoProvincia::class, 'table' => 'cup_geo_province', 'foreignKey' => 'provincia_id'],
         'regione' => [self::BELONGS_TO, 'related' => CupGeoRegione::class, 'table' => 'cup_geo_regioni', 'foreignKey' => 'regione_id'],
         'area' => [self::BELONGS_TO, 'related' => CupGeoArea::class, 'table' => 'cup_geo_aree', 'foreignKey' => 'area_id'],
+        'nazione' => [self::BELONGS_TO, 'related' => CupGeoNazione::class, 'table' => 'cup_geo_nazioni', 'foreignKey' => 'nazione_id'],
 
 
 //        'belongsto' => array(self::BELONGS_TO, Comune::class, 'foreignKey' => '<FOREIGNKEYNAME>'),

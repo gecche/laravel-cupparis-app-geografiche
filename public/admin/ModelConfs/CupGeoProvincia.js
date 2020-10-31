@@ -2,14 +2,14 @@ var ModelCupGeoProvincia = {
     search: {
         modelName : 'provincia',
         //langContext : 'user',
-        fields : ['regione_id','descrizione'],
+        fields : ['regione_id','nome_it'],
         fieldsConfig: {
             'regione_id' : {
                 type: 'w-select'
 
             }
         }
-        },
+    },
     // view : {
     //     modelName : 'provincia',
     //     //fields : ['name','email','password','password_confirmation','banned','mainrole','fotos','attachments'],
@@ -23,23 +23,44 @@ var ModelCupGeoProvincia = {
     // },
     list: {
         modelName : 'provincia',
-        fields : ['sigla','regione'],
-        actions : ['action-edit','action-delete','action-insert','action-view'],
+        fields : [
+            'codice','nome_it','sigla',
+            'regione',
+            'attivo'
+
+        ],
+        actions : ['action-edit','action-delete','action-insert','action-view',
+            'action-export-csv'
+        ],
         orderFields : {
+            'codice':'codice',
+            'nome_it':'nome_it',
             'sigla':'sigla'
         },
-        fieldsConfig: {
-            regione : {
+        fieldsConfig : {
+            'attivo' : {
+                type : 'w-swap-smarty',
+                modelName : 'cup_geo_provincia'
+            },
+            'regione' : {
                 type : 'w-belongsto',
-                labelFields : ['codice','descrizione'],
-			},
+                labelFields : [
+                    'nome_it',
+                ]
+            }
+        },
+        customActions : {
+            'action-export-csv' : {
+                text: 'Csv',
+            }
         }
+
 
     },
     edit: {
         modelName : 'provincia',
         actions : ['action-save','action-back'],
-        fields : ['codice','descrizione','sigla','regione_id',
+        fields : ['codice','nome_it','sigla','regione_id','codice_nuovo'
             //'comuni'
         ],
 
@@ -51,7 +72,7 @@ var ModelCupGeoProvincia = {
                 // limit : 1,
                 hasmanyConf : {
                     langContext : 'comune',
-                    fields : ['id','codice','descrizione','codice_catastale','cap','prefisso_telefonico'],
+                    fields : ['id','codice','nome_it','codice_catastale','cap','prefisso_telefonico'],
                     fieldsConfig : {
                         // codice_catastale :  {
                         //     type : 'w-select'
@@ -65,7 +86,7 @@ var ModelCupGeoProvincia = {
     view : {
         modelName : 'provincia',
         //actions : ['action-save','action-back'],
-        fields : ['codice','descrizione','sigla','regione',
+        fields : ['codice','nome_it','sigla','regione',
             'comuni'
         ],
         fieldsConfig: {
@@ -73,9 +94,9 @@ var ModelCupGeoProvincia = {
                 type: 'w-belongsto-view',
                 labelFields:
                     [
-                        'descrizione',
+                        'nome_it',
                     ],
-			},
+            },
             //roles : 'w-select',
             comuni : {
                 type : 'w-custom',
@@ -101,9 +122,9 @@ var ModelCupGeoProvincia = {
                         var comune = that.modelData['comuni'][i];
                         if (j % 2 == 0) {
                             that.value += '<tr>';
-        }
+                        }
 
-                        that.value += '<td>'+comune.descrizione+'</td>';
+                        that.value += '<td>'+comune.nome_it+'</td>';
 
                         if (j % 2 != 0) {
                             that.value += '</tr>';
@@ -117,11 +138,11 @@ var ModelCupGeoProvincia = {
                         '</tbody>'+
                         '</table>'+
                         '</div>';
-    },
+                },
 
                 // hasmanyConf : {
                 //     langContext : 'comune',
-                //     fields : ['id','codice','descrizione','codice_catastale','cap','prefisso_telefonico'],
+                //     fields : ['id','codice','nome_it','codice_catastale','cap','prefisso_telefonico'],
                 //     fieldsConfig : {
                 //         // codice_catastale :  {
                 //         //     type : 'w-select'

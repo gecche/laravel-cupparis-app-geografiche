@@ -3,32 +3,54 @@
 
 return [
 
-    'delete' => [
-
-    ],
-
     'search' => [
         "fields" => [
-            "descrizione" => []
-        ]
+            "nome_it" => [
+                'operator' => 'like',
+            ]
+        ],
+
     ],
     'list' => [
 
-        'allowed_actions' => [
-
-        ],
-
+////        'allowed_actions' => [
+////            'csv-export' => true,
+////        ],
+//
         'actions' => [
-//            'set' => [
-//                'allowed_fields' => [
-//                    'banned',
-//                    'email_verified_at',
+            'set' => [
+                'allowed_fields' => [
+                    'attivo',
+                ],
+            ],
+            //            'csv-export' => [
+//                'default' => [
+//                    'blacklist' => [
+////                        'password'
+//                    ],
+//                    'whitelist' => [
+//                        "codice",
+//                        "nome_it",
+//
 //                ],
-//            ],
+//                    'fieldsParams' => [
+////                        "istituto|comunenome" => [
+////                            'header' => 'Istituto - comune (nome)',
+////                            'item' => 'istituto|T_COMUNE_ID',
+////                        ],
+//                    ],
+//                    'separator' => ';',
+//                    'endline' => "\n",
+//                    'headers' => 'translate',
+//                    'decimalFrom' => '.',
+//                    'decimalTo' => false,
+//                ],
+//            ]
+//
         ],
 
         'dependencies' => [
-//            'search' => 'search',
+            'search' => 'search',
         ],
 
         'pagination' => [
@@ -43,9 +65,12 @@ return [
             "codice" => [
 
             ],
-            "descrizione" => [
+            "nome_it" => [
 
-            ]
+            ],
+            'attivo' => [
+
+            ],
         ],
         'relations' => [
 
@@ -54,48 +79,7 @@ return [
 
         ],
     ],
-    'list_csv_export' => [
 
-        'allowed_actions' => [
-
-        ],
-
-        'actions' => [
-//            'set' => [
-//                'allowed_fields' => [
-//                    'banned',
-//                    'email_verified_at',
-//                ],
-//            ],
-        ],
-
-        'dependencies' => [
-//            'search' => 'search',
-        ],
-
-        'pagination' => [
-            //'per_page' => 20,
-            'pagination_steps' => [10, 20, 50],
-        ],
-
-        'fields' => [
-            "id" => [
-
-            ],
-            "codice" => [
-
-            ],
-            "descrizione" => [
-
-            ]
-        ],
-        'relations' => [
-
-        ],
-        'params' => [
-
-        ],
-    ],
 
     'edit' => [
         'fields' => [
@@ -105,7 +89,10 @@ return [
             "codice" => [
 
             ],
-            "descrizione" => [
+            "nome_it" => [
+
+            ],
+            "attivo" => [
 
             ]
         ],

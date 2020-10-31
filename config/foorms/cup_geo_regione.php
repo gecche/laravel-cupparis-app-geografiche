@@ -46,14 +46,10 @@
 
 return [
 
-    'delete' => [
-
-    ],
-
     'search' => [
         'fields' => [
 
-            "descrizione" => [
+            "nome_it" => [
                 'operator' => 'like',
 
             ],
@@ -64,6 +60,29 @@ return [
     ],
     'list' => [
 
+        'actions' => [
+            'set' => [
+                'allowed_fields' => [
+                    'attivo',
+                ],
+            ],
+            'csv-export' => [
+                'default' => [
+                    'whitelist' => [
+                        'codice',
+                        'nome_it',
+                        'area|nome_it',
+                        'attivo',
+                    ],
+//                    'whitelist' => null,
+                    'separator' => ';',
+                    'endline' => "\n",
+                    'headers' => 'translate',
+                    'decimalFrom' => '.',
+                    'decimalTo' => false,
+                ],
+            ],
+        ],
         'dependencies' => [
             'search' => 'search',
         ],
@@ -80,14 +99,17 @@ return [
             "codice" => [
 
             ],
-            "descrizione" => [
+            "nome_it" => [
 
             ],
+            "attivo" => [
+
+            ]
         ],
         'relations' => [
             "area" => [
                 "fields" => [
-                    "descrizione" => [
+                    "nome_it" => [
 
                     ]
                 ]
@@ -99,10 +121,13 @@ return [
     ],
     'edit' => [
         'fields' => [
+            "id" => [
+
+            ],
             "codice" => [
 
             ],
-            "descrizione" => [
+            "nome_it" => [
 
             ],
             "area_id" => [

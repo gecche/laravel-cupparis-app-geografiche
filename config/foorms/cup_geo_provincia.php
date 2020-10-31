@@ -51,13 +51,40 @@ return [
             'regione_id' => [
                 'options' => 'relation:regione'
             ],
-            'descrizione' => [
+            'nome_it' => [
                 'operator' => 'like'
             ],
 
         ]
     ],
     'list' => [
+
+        'actions' => [
+            'set' => [
+                'allowed_fields' => [
+                    'attivo',
+                ],
+            ],
+            'csv-export' => [
+                'default' => [
+                    'whitelist' => [
+                        'codice',
+                        'nome_it',
+                        'sigla',
+                        'codice_nuovo',
+                        'regione|nome_it',
+                        'area|nome_it',
+                        'attivo',
+                    ],
+//                    'whitelist' => null,
+                    'separator' => ';',
+                    'endline' => "\n",
+                    'headers' => 'translate',
+                    'decimalFrom' => '.',
+                    'decimalTo' => false,
+                ],
+            ],
+        ],
 
         'dependencies' => [
             'search' => 'search',
@@ -71,20 +98,37 @@ return [
         'fields' => [
             'id' => [
             ],
+            'codice' => [
+
+            ],
+            'nome_it' => [
+
+            ],
             'sigla' => [
 
             ],
+            'codice_nuovo' => [
+
+            ],
+            'attivo' => [
+
+            ],
+
         ],
         'relations' => [
 //            'comuni' => [
 //                'fields' => [
-//                    'descrizione' => [],
+//                    'nome_it' => [],
 //                ]
 //            ],
             'regione' => [
                 'fields' => [
-                    'codice' => [],
-                    'descrizione' => [],
+                    'nome_it' => [],
+                ]
+            ],
+            'area' => [
+                'fields' => [
+                    'nome_it' => [],
                 ]
             ],
         ],
@@ -96,8 +140,11 @@ return [
         'fields' => [
             'id' => [],
             'codice' => [],
-            'descrizione' => [],
+            'nome_it' => [],
             'sigla' => [],
+            'codice_nuovo' => [
+
+            ],
             'regione_id' => [
                 'options' => 'relation:regione'
             ],
@@ -110,19 +157,19 @@ return [
                     ],
                     'codice' => [
                     ],
-                    'descrizione' => [
+                    'nome_it' => [
                     ],
                     'codice_catastale' => [
-                        'options' => [
-                            1 => 'pippo',
-                            2 => 'pluto',
-                        ],
-                        'nulloptions' => true,
+//                        'options' => [
+//                            1 => 'pippo',
+//                            2 => 'pluto',
+//                        ],
+//                        'nulloptions' => true,
                     ],
                     'cap' => [
 
                     ],
-                    'prefisso_telefonico' => [
+                    'prefisso' => [
 
                     ],
                 ],
@@ -138,8 +185,11 @@ return [
             //'id' => [],
             'id' => [],
             'codice' => [],
-            'descrizione' => [],
+            'nome_it' => [],
             'sigla' => [],
+            'codice_nuovo' => [
+
+            ],
         ],
         'relations' => [
             'comuni' => [
@@ -149,19 +199,19 @@ return [
                     ],
                     'codice' => [
                     ],
-                    'descrizione' => [
+                    'nome_it' => [
                     ],
                     'codice_catastale' => [
-                        'options' => [
-                            1 => 'pippo',
-                            2 => 'pluto',
-                        ],
-                        'nulloptions' => true,
+//                        'options' => [
+//                            1 => 'pippo',
+//                            2 => 'pluto',
+//                        ],
+//                        'nulloptions' => true,
                     ],
                     'cap' => [
 
                     ],
-                    'prefisso_telefonico' => [
+                    'prefisso' => [
 
                     ],
                 ],
@@ -170,7 +220,7 @@ return [
             'regione' => [
                 'fields' => [
                     'codice' => [],
-                    'descrizione' => [],
+                    'nome_it' => [],
                 ]
             ],
 

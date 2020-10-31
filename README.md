@@ -19,6 +19,15 @@ Procedura di installazione
     {!! Theme::css('assets/css/flag-icon.css') !!}
     
     
+```    
+php artisan vendor:publish --provider="Gecche\Cupparis\App\Geografiche\GeoServiceProvider"
+composer dump-autoload
+php artisan install-cupparis-package cupparis-app-geografiche
+php artisan migrate
+php artisan db:seed --class=CupGeoSeeder
+ln -s ../../../../vendor/components/flag-icon-css/css/flag-icon.css public/admin/assets/css/flag-icon.css
+ln -s ../../../vendor/components/flag-icon-css/flags public/admin/assets/flags
+```
 
 
 Procedura di disinstallazione
@@ -28,3 +37,13 @@ Procedura di disinstallazione
 2 - eventualmente: 
     a - php artisan migrate:rollback
     b - cancellare i files di migrazione manualmente che iniziano con "cup_geo" 
+
+```    
+rm public/admin/assets/css/flag-icon.css
+rm public/admin/assets/flags
+
+php artisan uninstall-cupparis-package cupparis-app-geografiche --json
+php artisan migrate:rollback
+rm -f database/migrations/*create_cup_geo_*.php
+rm -f database/migrations/*create_datafile_cup_geo_*.php
+```    
