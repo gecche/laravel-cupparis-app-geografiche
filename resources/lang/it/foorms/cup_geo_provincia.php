@@ -45,30 +45,25 @@
  */
 
 return [
-    'metadata' => [
-        'name' => 'provincia|province',
+    'fields' => [
+        'regione_id' => 'regione',
+        'area_id' => 'regione',
+        'nome_it' => 'nome',
+        'sigla' => 'sigla',
+        'codice' => 'codice territoriale',
+        'codice_nuovo' => 'codice territoriale (nuovo)',
+        'attivo' => 'attiva',
+        'codice_catastale' => 'codice catastale',
+        'cap' => 'CAP',
+        'prefisso' => 'prefisso telefonico',
     ],
-    'regione_id' => 'regione',
-    'area_id' => 'regione',
-    'nome' => 'nome',
-    'sigla' => 'sigla',
-    'codice' => 'codice territoriale',
-    'codice_nuovo' => 'codice territoriale (nuovo)',
-    'attivo' => 'attiva',
-    'regione' => [
-        'metadata' => [
-            'name' => 'regione|regioni',
-        ],
-        'codice' => '',
-        'nome' => '',
+    'name' => 'provincia|province',
+    'relations' => [
+        'regione' => 'regione|regioni',
+        'area' => 'area|aree',
+        'comune' => 'comune|comuni',
     ],
-    'comuni' => [
-        'metadata' => [
-            'name' => 'comuni|comuni',
-        ],
-        'nome' => '',
-        'codice_catastale' => '',
-        'cap' => '',
-        'prefisso_telefonico' => '',
-    ],
+    'list' => [],
+    'edit' => [],
+    'view' => [],
 ];
