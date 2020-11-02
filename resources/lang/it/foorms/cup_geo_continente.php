@@ -43,11 +43,17 @@
  *      ],
  * ]
  */
-
 return [
-    'metadata' => [
-        'name' => 'continente|continenti',
+    'name' => 'continente|continenti',
+    'fields' => [
+        'nome_it' => 'nome (IT)',
+        'codice' => 'codice',
     ],
-    'nome_it' => 'nome (IT)',
-    'codice' => 'codice',
+    'relations' => [
+
+    ],
+    'list' => [],
+    'insert' => [],
+    'edit' => [],
+    'view' => [],
 ];

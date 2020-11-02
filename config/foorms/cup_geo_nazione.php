@@ -120,6 +120,9 @@ return [
 
             ],
 
+            'flagicon' => [
+
+            ],
             'attivo' => [
 
             ],

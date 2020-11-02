@@ -1,66 +1,21 @@
 <?php
 
-
-/*
- * 'model' => <MODELNAME>
- * <FORMNAME> =>  [ //nome del form da route
- *      type => <FORMTYPE>, //tipo di form (opzionale se non c'è viene utilizzato il nome)
- *              //search, list, edit, insert, view, csv, pdf
- *      fields => [ //i campi del modello principale
- *          <FIELDNAME> => [
- *              'default' => <DEFAULTVALUE> //valore di default del campo (null se non presente)
- *              'options' => array|relation:<RELATIONNAME>:<COLUMNS>|dboptions|boolean
- *                          //le opzioni possibili di un campo, prese da un array associativo,
- *                              da una relazione (gli id del modello correlato
- *                              con <COLUMNS> serie di campi separati da virgola da inviare,
- *                              dal database (enum ecc...)
- *                              booleano
- *              'nulloption' => true|false|onchoice //onchoice indica che l'opzione nullable è presente solo se i valori
- *                                  delle options sono più di uno; default: true,
- *          ]
- *      ],
- *      relations => [ // le relazioni del modello principale
- *          <RELATIONNAME> => [
- *              fields => [ //i campi del modello principale
- *                  <FIELDNAME> => [
- *                      'default' => <DEFAULTVALUE> //valore di default del campo (null se non presente)
- *                      'options' => array|relation:<RELATIONNAME>|dboptions|boolean
- *                          //le opzioni possibili di un campo, prese da un array associativo,
- *                              da una relazione (gli id del modello correlato,
- *                              dal database (enum ecc...)
- *                              booleano
- *                      'nulloption' => true|false|onchoice //onchoice indica che l'opzione nullable è presente solo se i valori
- *                                    delle options sono più di uno; default: true,
- *                  ]
- *              ],
- *              savetype => [ //metodo di salvataggio della relazione
- *                              (in caso di edit/insert) da definire meglio
- *              ]
- *          ]
- *      ],
- *      params => [ // altri parametri opzionali
- *
- *      ],
- * ]
- */
-
 return [
+    'name' => 'provincia|province',
     'fields' => [
-        'regione_id' => 'regione',
-        'area_id' => 'regione',
+        'codice' => 'codice territoriale',
         'nome_it' => 'nome',
         'sigla' => 'sigla',
-        'codice' => 'codice territoriale',
-        'codice_nuovo' => 'codice territoriale (nuovo)',
-        'attivo' => 'attiva',
         'codice_catastale' => 'codice catastale',
-        'cap' => 'CAP',
+        'codice_nuovo' => 'codice territoriale (nuovo)',
+        'regione_id' => 'regione',
+        'area_id' => 'regione',
+        'attivo' => 'attiva',
         'comuni' => [
-            'nome_it' => 'nome (IT)',
             'prefisso' => 'prefisso telefonico',
+            'cap' => 'CAP',
         ]
     ],
-    'name' => 'provincia|province',
     'relations' => [
         'regione' => 'regione|regioni',
         'area' => 'area|aree',
@@ -68,15 +23,16 @@ return [
     ],
     'list' => [
         'fields' => [
-            'sigla' => 'Sg.',
+            'codice' => 'Cod.',
+            'codice_catastale' => 'Cod. Cat.',
+            'codice_nuovo' => 'Cod. (Nuovo)',
             'comuni' => [
-                'prefisso' => 'Prefisso tel.',
+                'prefisso' => 'Pref. tel.',
             ],
         ],
         'relations' => [
-            'comuni' => 'Com.|com.',
-        ]
 
+        ]
     ],
     'insert' => [],
     'edit' => [],

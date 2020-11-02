@@ -84,10 +84,15 @@ var ModelCupGeoComune = {
             'nazione_id',
             'cap',
             'prefisso',
-
+            'mappa'
         ],
         fieldsConfig: {
-
+            mappa : {
+                template : 'tpl-full-no',
+                type : 'w-map',
+                //latName : 'lat',
+                //lngName : 'lng',
+            },
             'capoluogo' : {
                 type : "w-radio",
             },

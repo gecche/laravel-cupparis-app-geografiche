@@ -45,11 +45,18 @@
  */
 
 return [
-    'metadata' => [
-        'name' => 'regione|regioni',
+    'name' => 'regione|regioni',
+    'fields' => [
+        'codice' => 'codice',
+        'nome_it' => 'nome',
+        'area_id' => 'area',
+        'attivo' => 'attiva',
     ],
-    'codice' => 'codice',
-    'nome' => 'nome',
-    'area_id' => 'area',
-    'attivo' => 'attiva',
+    'relations' => [
+        'area' => 'area|aree',
+    ],
+    'list' => [],
+    'insert' => [],
+    'edit' => [],
+    'view' => [],
 ];
