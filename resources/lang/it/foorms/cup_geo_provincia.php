@@ -55,15 +55,30 @@ return [
         'attivo' => 'attiva',
         'codice_catastale' => 'codice catastale',
         'cap' => 'CAP',
-        'prefisso' => 'prefisso telefonico',
+        'comuni' => [
+            'nome_it' => 'nome (IT)',
+            'prefisso' => 'prefisso telefonico',
+        ]
     ],
     'name' => 'provincia|province',
     'relations' => [
         'regione' => 'regione|regioni',
         'area' => 'area|aree',
-        'comune' => 'comune|comuni',
+        'comuni' => 'comune provinciale|comuni provinciali',
     ],
-    'list' => [],
+    'list' => [
+        'fields' => [
+            'sigla' => 'Sg.',
+            'comuni' => [
+                'prefisso' => 'Prefisso tel.',
+            ],
+        ],
+        'relations' => [
+            'comuni' => 'Com.|com.',
+        ]
+
+    ],
+    'insert' => [],
     'edit' => [],
     'view' => [],
 ];

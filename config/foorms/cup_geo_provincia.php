@@ -116,11 +116,13 @@ return [
 
         ],
         'relations' => [
-//            'comuni' => [
-//                'fields' => [
-//                    'nome_it' => [],
-//                ]
-//            ],
+            'comuni' => [
+                'fields' => [
+                    'nome_it' => [],
+                    'lat' => [],
+                    'prefisso' => [],
+                ]
+            ],
             'regione' => [
                 'fields' => [
                     'nome_it' => [],
@@ -214,6 +216,7 @@ return [
                     'prefisso' => [
 
                     ],
+                    'lng' => [],
                 ],
 
             ],
