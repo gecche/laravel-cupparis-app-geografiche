@@ -54,13 +54,13 @@ class GeoServiceProvider extends ServiceProvider
             // Export the migration
             if (! class_exists('CreateCupGeoNazioniTable')) {
                 $this->publishes([
-                    __DIR__ . '/../database/migrations/create_cup_geo_continenti_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-6) . '_create_cup_geo_continenti_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_aree_mondiali_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-5) . '_create_cup_geo_aree_mondiali_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_nazioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-4) . '_create_cup_geo_nazioni_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_aree_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-3) . '_create_cup_geo_aree_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_regioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-2) . '_create_cup_geo_regioni_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_province_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-1) . '_create_cup_geo_province_table.php'),
-                    __DIR__ . '/../database/migrations/create_cup_geo_comuni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_cup_geo_comuni_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_continenti_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-99) . '_create_cup_geo_continenti_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_aree_mondiali_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-98) . '_create_cup_geo_aree_mondiali_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_nazioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-97) . '_create_cup_geo_nazioni_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_aree_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-96) . '_create_cup_geo_aree_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_regioni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-95) . '_create_cup_geo_regioni_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_province_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-94) . '_create_cup_geo_province_table.php'),
+                    __DIR__ . '/../database/migrations/create_cup_geo_comuni_table.php' => database_path('migrations/' . date('Y_m_d_His', time()-93) . '_create_cup_geo_comuni_table.php'),
                     // you can add any number of migrations here
                 ], 'migrations');
             }
@@ -69,9 +69,9 @@ class GeoServiceProvider extends ServiceProvider
             // Export the migration
             if (! class_exists('CreateCupGeoNazioniTable')) {
                 $this->publishes([
-                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_aggiuntive.php' => database_path('migrations/' . date('Y_m_d_His', time()+100) . '_create_datafile_cup_geo_comuni_aggiuntive.php'),
-                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()+101) . '_create_datafile_cup_geo_comuni_istat.php'),
-                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_nazioni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()+102) . '_create_datafile_cup_geo_nazioni_istat.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_aggiuntive.php' => database_path('migrations/' . date('Y_m_d_His', time()-89) . '_create_datafile_cup_geo_comuni_aggiuntive.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_comuni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()-88) . '_create_datafile_cup_geo_comuni_istat.php'),
+                    __DIR__ . '/../database/datafile-migrations/create_datafile_cup_geo_nazioni_istat.php' => database_path('migrations/' . date('Y_m_d_His', time()-87) . '_create_datafile_cup_geo_nazioni_istat.php'),
                     // you can add any number of migrations here
                 ], 'datafile-migrations');
             }

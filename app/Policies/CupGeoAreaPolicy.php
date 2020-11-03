@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Area;
+use App\Models\CupGeoArea;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -15,13 +15,13 @@ class CupGeoAreaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Area  $model
+     * @param  \App\Models\CupGeoArea  $model
      * @return mixed
      */
-    public function view(User $user, Area $model)
+    public function view(User $user, CupGeoArea $model)
     {
         //
-        if ($user && $user->can('view area')) {
+        if ($user && $user->can('view cup_geo_area')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class CupGeoAreaPolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create area')) {
+        if ($user && $user->can('create cup_geo_area')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class CupGeoAreaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Area $model)
+    public function update(User $user, CupGeoArea $model)
     {
         //
-        if ($user && $user->can('edit area')) {
+        if ($user && $user->can('edit cup_geo_area')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class CupGeoAreaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Area $model)
+    public function delete(User $user, CupGeoArea $model)
     {
         //
-        if ($user && $user->can('delete area')) {
+        if ($user && $user->can('delete cup_geo_area')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class CupGeoAreaPolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list area')) {
+        if ($user && $user->can('list cup_geo_area')) {
             return true;
         }
 
@@ -104,14 +104,14 @@ class CupGeoAreaPolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all area')) {
+//        if ($user && $user->can('view all cup_geo_area')) {
 //            return Gate::aclAll($builder);
 //        }
 
-        if ($user && $user->can('view area')) {
-            return PolicyBuilder::all($builder,Area::class);
+        if ($user && $user->can('view cup_geo_area')) {
+            return PolicyBuilder::all($builder,CupGeoArea::class);
         }
 
-        return PolicyBuilder::none($builder,Area::class);
+        return PolicyBuilder::none($builder,CupGeoArea::class);
     }
 }

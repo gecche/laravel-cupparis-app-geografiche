@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Provincia;
+use App\Models\CupGeoProvincia;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Gecche\PolicyBuilder\Facades\PolicyBuilder;
 
@@ -15,13 +15,13 @@ class CupGeoProvinciaPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Provincia  $model
+     * @param  \App\Models\CupGeoProvincia  $model
      * @return mixed
      */
-    public function view(User $user, Provincia $model)
+    public function view(User $user, CupGeoProvincia $model)
     {
         //
-        if ($user && $user->can('view provincia')) {
+        if ($user && $user->can('view cup_geo_provincia')) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class CupGeoProvinciaPolicy
     public function create(User $user)
     {
         //
-        if ($user && $user->can('create provincia')) {
+        if ($user && $user->can('create cup_geo_provincia')) {
             return true;
         }
 
@@ -52,10 +52,10 @@ class CupGeoProvinciaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function update(User $user, Provincia $model)
+    public function update(User $user, CupGeoProvincia $model)
     {
         //
-        if ($user && $user->can('edit provincia')) {
+        if ($user && $user->can('edit cup_geo_provincia')) {
             return true;
         }
 
@@ -69,10 +69,10 @@ class CupGeoProvinciaPolicy
      * @param  \App\Models\Deal  $model
      * @return mixed
      */
-    public function delete(User $user, Provincia $model)
+    public function delete(User $user, CupGeoProvincia $model)
     {
         //
-        if ($user && $user->can('delete provincia')) {
+        if ($user && $user->can('delete cup_geo_provincia')) {
             return true;
         }
 
@@ -88,7 +88,7 @@ class CupGeoProvinciaPolicy
     public function listing(User $user)
     {
         //
-        if ($user && $user->can('list provincia')) {
+        if ($user && $user->can('list cup_geo_provincia')) {
             return true;
         }
 
@@ -104,13 +104,13 @@ class CupGeoProvinciaPolicy
     public function acl(User $user, $builder)
     {
 
-//        if ($user && $user->can('view all provincia')) {
+//        if ($user && $user->can('view all cup_geo_provincia')) {
 //        }
 
-        if ($user && $user->can('view provincia')) {
-            return PolicyBuilder::all($builder,Provincia::class);
+        if ($user && $user->can('view cup_geo_provincia')) {
+            return PolicyBuilder::all($builder,CupGeoProvincia::class);
         }
 
-        return PolicyBuilder::none($builder,Provincia::class);
+        return PolicyBuilder::none($builder,CupGeoProvincia::class);
     }
 }
