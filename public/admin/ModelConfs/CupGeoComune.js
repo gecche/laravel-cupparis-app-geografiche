@@ -1,6 +1,6 @@
 var ModelCupGeoComune = {
     search : {
-        modelName : 'comune',
+        modelName : 'cup_geo_comune',
         fields : ['nome_it','provincia_id'],
         fieldsConfig : {
             'nome_it' : {
@@ -40,11 +40,11 @@ var ModelCupGeoComune = {
         fieldsConfig: {
             'capoluogo' : {
                 type : 'w-swap-smarty',
-                modelName : 'comune',
+                modelName : 'cup_geo_comune',
             },
             'attivo' : {
                 type : 'w-swap-smarty',
-                modelName : 'comune',
+                modelName : 'cup_geo_comune',
             },
             'provincia' : {
                 type : "w-belongsto",

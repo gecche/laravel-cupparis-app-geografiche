@@ -1,6 +1,6 @@
 var ModelCupGeoProvincia = {
     search: {
-        modelName : 'provincia',
+        modelName : 'cup_geo_provincia',
         //langContext : 'user',
         fields : ['regione_id','nome_it'],
         fieldsConfig: {
@@ -11,7 +11,7 @@ var ModelCupGeoProvincia = {
         }
     },
     // view : {
-    //     modelName : 'provincia',
+    //     modelName : 'cup_geo_provincia',
     //     //fields : ['name','email','password','password_confirmation','banned','mainrole','fotos','attachments'],
     //     actions : [],
     //     fieldsConfig : {
@@ -22,7 +22,7 @@ var ModelCupGeoProvincia = {
     //     }
     // },
     list: {
-        modelName : 'provincia',
+        modelName : 'cup_geo_provincia',
         fields : [
             'codice','nome_it','sigla',
             'regione',
@@ -58,7 +58,7 @@ var ModelCupGeoProvincia = {
 
     },
     edit: {
-        modelName : 'provincia',
+        modelName : 'cup_geo_provincia',
         actions : ['action-save','action-back'],
         fields : ['codice','nome_it','sigla','regione_id','codice_nuovo'
             //'comuni'
@@ -84,7 +84,7 @@ var ModelCupGeoProvincia = {
         },
     },
     view : {
-        modelName : 'provincia',
+        modelName : 'cup_geo_provincia',
         //actions : ['action-save','action-back'],
         fields : ['codice','nome_it','sigla','regione',
             'comuni'
