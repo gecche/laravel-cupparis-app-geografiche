@@ -83,5 +83,14 @@
     "dump": [
       "cup_geo_seed_20201030"
     ]
-  }
+  },
+  "install" : [
+      "php artisan vendor:publish --provider=\"Gecche\\Cupparis\\App\\Geografiche\\GeoServiceProvider\"",
+      "composer dump-autoload",
+      "php artisan install-cupparis-package cupparis-app-geografiche",
+      "php artisan migrate",
+      "php artisan db:seed --class=CupGeoSeeder",
+      "ln -s ../../../../vendor/components/flag-icon-css/css/flag-icon.css public/admin/assets/css/flag-icon.css",
+      "ln -s ../../../vendor/components/flag-icon-css/flags public/admin/assets/flags"
+  ]
 }
