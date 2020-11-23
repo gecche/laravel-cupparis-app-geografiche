@@ -7,6 +7,7 @@ use App\Models\CupGeoProvincia;
 use App\Models\CupGeoRegione;
 use App\Models\CupGeoNazione;
 use Gecche\Cupparis\App\Breeze\Breeze;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /**
@@ -89,5 +90,35 @@ class CupGeoComune extends Breeze
         }
         return $value;
     }
+
+    public function setCompletionItem($result, $labelColumns)
+    {
+        $this->setCompletionItemFunction(
+            function ($item) use ($labelColumns) {
+                $filteredItem = [];
+                $item = $item->toArray();
+                $itemDotted = Arr::dot($item);
+                foreach ($labelColumns as $column) {
+                    $chunks = explode('|', $column);
+                    if (count($chunks) > 1) {
+                        $relationField = implode('.',$chunks);
+                        if ($column == 'nazione|codice_iso_3') {
+                            $columnValue = Arr::get($itemDotted,$relationField,'ITA');
+                        } else {
+                            $columnValue = Arr::get($itemDotted,$relationField);
+                        }
+                    } else {
+                        $columnValue = Arr::get($item,$column);
+                    }
+                    $filteredItem[$column] = $columnValue;
+                }
+
+                return $filteredItem;
+            }
+        );
+        return parent::setCompletionItem($result,$labelColumns);
+    }
+
+
 }
 
