@@ -29,6 +29,7 @@ class CupGeoSeeder extends Seeder
         ];
 
 
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         foreach ($cmdArray as $cmd => $group) {
 
             $cmdArrayProcessed[] = $cmd;
@@ -44,8 +45,9 @@ class CupGeoSeeder extends Seeder
 
             $this->command->comment($process->getOutput());
         }
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        DB::table('cup_geo_comuni')->whereNull('nazione_id')->update(['nazione_id' => 1]);
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
         $this->command->comment('Tabelle geografice inizializzate (dump: '.$dumpFile.')');
 
