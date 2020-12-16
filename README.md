@@ -29,6 +29,18 @@ ln -s ../../../../vendor/components/flag-icon-css/css/flag-icon.css public/admin
 ln -s ../../../vendor/components/flag-icon-css/flags public/admin/assets/flags
 ```
 
+con laravel-modules
+
+```    
+php artisan vendor:publish --provider="Gecche\Cupparis\App\Geografiche\GeoServiceProvider"
+composer dump-autoload
+php artisan install-cupparis-package cupparis-app-geografiche
+php artisan module:migrate CupGeo
+php artisan module:migrate CupGeo --subpath=datafile
+php artisan module:seed CupGeo
+ln -s ../../../../vendor/components/flag-icon-css/css/flag-icon.css public/admin/assets/css/flag-icon.css
+ln -s ../../../vendor/components/flag-icon-css/flags public/admin/assets/flags
+```
 
 Procedura di disinstallazione
 
@@ -46,4 +58,15 @@ php artisan uninstall-cupparis-package cupparis-app-geografiche --json
 php artisan migrate:rollback
 rm -f database/migrations/*create_cup_geo_*.php
 rm -f database/migrations/*create_datafile_cup_geo_*.php
+```    
+
+con laravel-modules
+
+```    
+rm public/admin/assets/css/flag-icon.css
+rm public/admin/assets/flags
+
+php artisan uninstall-cupparis-package cupparis-app-geografiche --json
+php artisan module:migrate-rollback --path=Modules/CupGeo/Database/Migrations/datafile
+php artisan module:migrate-rollback 
 ```    
