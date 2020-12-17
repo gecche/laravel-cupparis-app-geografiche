@@ -32,9 +32,9 @@ ln -s ../../../vendor/components/flag-icon-css/flags public/admin/assets/flags
 con laravel-modules
 
 ```    
-php artisan vendor:publish --provider="Gecche\Cupparis\App\Geografiche\GeoServiceProvider"
+php artisan vendor:publish --provider="Modules\CupGeo\Providers\CupGeoServiceProvider"
 composer dump-autoload
-php artisan install-cupparis-package cupparis-app-geografiche
+php artisan install-cupparis-package CupGeo
 php artisan module:migrate CupGeo
 php artisan module:migrate CupGeo --subpath=datafile
 php artisan module:seed CupGeo
@@ -66,7 +66,7 @@ con laravel-modules
 rm public/admin/assets/css/flag-icon.css
 rm public/admin/assets/flags
 
-php artisan uninstall-cupparis-package cupparis-app-geografiche --json
-php artisan module:migrate-rollback --path=Modules/CupGeo/Database/Migrations/datafile
+php artisan uninstall-cupparis-package CupGeo
+php artisan migrate:rollback --path=Modules/CupGeo/Database/Migrations/datafile
 php artisan module:migrate-rollback 
 ```    
